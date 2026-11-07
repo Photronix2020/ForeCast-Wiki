@@ -180,7 +180,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="halo" data-s>
 <h2>The combat halo <span class="pill">new in 0.7</span></h2>
-<p>Glowing arcs around your character, so your eyes stay on your character and the red comes up at the edge of your vision. Turn it on under <b>Settings › Halo</b> or with <code>/fc halo</code>. It shows whenever a living enemy is targeted.</p>
+<p>Glowing arcs around your character, so your eyes stay on your character and the red comes up at the edge of your vision. Turn it on under <b>Settings › Halo</b> or with <code>/fc halo</code>. It shows whenever a living enemy is targeted. With <b>Halo when idle</b> above 0%, it also stays on screen, faded to that opacity, when nothing is targeted.</p>
 <h3>Arcs</h3>
 <p>Only the arc on the side of the suggested spell lights up. It pulses red when it's time to press, fills up in green as the next spell comes off cooldown, and stays gold while you should wait.</p>
 <h3>Spells on the halo</h3>
@@ -197,12 +197,12 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <h3>Readouts</h3>
 <p>With these the halo can stand in for the window:</p>
 <ul>
-  <li><b>Power ring</b> around the left arc (mana, rage or energy), filling from the bottom.</li>
+  <li><b>Power ring</b> around the left arc (mana, rage or energy): a glowing line that fills from the bottom.</li>
   <li><b>Pet health ring</b> around the right arc (your own health if you have no pet). Both stay live in combat even though Forever hides the numbers.</li>
   <li><b>Stats</b> above the halo: <code>ON YOU</code>, DPS, threat and time to kill.</li>
 </ul>
 <h3>Placing it</h3>
-<p>Sliders for halo size, width (how far apart the two sides are), icon size and opacity. Untick <b>Lock halo position</b> and drag it. <b>Reset halo position</b> puts it back around your character. <b>Halo only</b> hides the ForeCast window entirely; settings stay on the minimap button and <code>/fc</code>.</p>
+<p>Sliders for halo size, width (how far apart the two sides are), height, icon size, opacity and idle opacity. Width and height change only their own direction; the halo only grows past them when the icons need the room. Icons and text never overlap at any setting. Untick <b>Lock halo position</b> and drag it. <b>Reset halo position</b> puts it back around your character. <b>Halo only</b> hides the ForeCast window entirely; settings stay on the minimap button and <code>/fc</code>.</p>
 </section>
 
 <section id="recap" data-s>
@@ -469,8 +469,9 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Halo only</td><td>Hides the ForeCast window</td><td>Off</td></tr>
 <tr><td>Click the spells on the halo</td><td>Ring icons cast in combat</td><td>On</td></tr>
 <tr><td>Halo spells</td><td>Ring, ranged left / melee right, or one icon below</td><td>Split (hunter), ring (others)</td></tr>
-<tr><td>Halo size · width · icon size</td><td>50–200% · 50–250% · 50–200%</td><td>100%</td></tr>
+<tr><td>Halo size · width · height · icon size</td><td>50–200% · 50–250% · 50–250% · 50–200%</td><td>100%</td></tr>
 <tr><td>Halo opacity</td><td>10–100%</td><td>100%</td></tr>
+<tr><td>Halo when idle</td><td>Opacity with no enemy targeted (0 = hidden)</td><td>Hidden</td></tr>
 <tr><td>Power ring · pet health ring · stats</td><td>Readouts on the halo</td><td>On</td></tr>
 <tr><td>Reset halo position</td><td>Back around your character</td><td></td></tr>
 </table></div>
