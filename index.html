@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ForeCast Wiki</title>
+<meta name="description" content="Reference for ForeCast, the rotation coach for every class in WoW: Forever. Every feature, setting and command.">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b14;--panel:#121222;--panel2:#181830;--line:#2a2745;--text:#e7e5f2;--muted:#9c98b8;
+  --accent:#69e9ac;--purple:#9a5ae6;--red:#ff5a4a;--green:#4fe07f;--gold:#ffc83a;--code:#1d1b33;
+  --shadow:0 1px 0 rgba(255,255,255,.03) inset;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f7f6fb;--panel:#ffffff;--panel2:#f1eff8;--line:#dedaee;--text:#1d1a2e;--muted:#5f5a7a;
+    --accent:#14955a;--purple:#7337c6;--red:#d6372a;--green:#1c9a4a;--gold:#a87700;--code:#efedf7;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f7f6fb;--panel:#ffffff;--panel2:#f1eff8;--line:#dedaee;--text:#1d1a2e;--muted:#5f5a7a;
+  --accent:#14955a;--purple:#7337c6;--red:#d6372a;--green:#1c9a4a;--gold:#a87700;--code:#efedf7;
+}
+:root[data-theme="dark"]{
+  --bg:#0b0b14;--panel:#121222;--panel2:#181830;--line:#2a2745;--text:#e7e5f2;--muted:#9c98b8;
+  --accent:#69e9ac;--purple:#9a5ae6;--red:#ff5a4a;--green:#4fe07f;--gold:#ffc83a;--code:#1d1b33;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Inter,system-ui,sans-serif}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+code,kbd{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.88em;background:var(--code);padding:.1em .4em;border-radius:5px}
+.layout{display:grid;grid-template-columns:270px 1fr;min-height:100vh}
+aside{position:sticky;top:0;height:100vh;overflow:auto;background:var(--panel);border-right:1px solid var(--line);padding:20px 16px}
+.brand{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.brand img{width:40px;height:40px;border-radius:10px}
+.brand b{font-size:18px;letter-spacing:.5px}
+.brand small{display:block;color:var(--muted);font-size:12px}
+#search{width:100%;padding:9px 11px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--text);font:inherit;margin-bottom:12px}
+nav a{display:block;color:var(--muted);padding:4px 8px;border-radius:6px;font-size:14px}
+nav a:hover,nav a.on{color:var(--text);background:var(--panel2);text-decoration:none}
+nav .grp{font-size:11px;text-transform:uppercase;letter-spacing:1.2px;color:var(--purple);margin:14px 8px 4px;font-weight:700}
+.theme{margin-top:16px;width:100%;padding:7px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--muted);font:inherit;cursor:pointer}
+main{padding:36px 48px 80px;max-width:980px}
+header.hero{display:flex;gap:20px;align-items:center;margin-bottom:8px}
+header.hero img{width:88px;height:88px;border-radius:18px}
+h1{font-size:34px;margin:0;line-height:1.15}
+.tag{color:var(--muted);margin:4px 0 0}
+section{border-top:1px solid var(--line);padding-top:22px;margin-top:30px}
+h2{font-size:24px;margin:0 0 10px} h3{font-size:17px;margin:22px 0 6px}
+p{margin:8px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0;box-shadow:var(--shadow)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.cue{border-left:4px solid var(--c);padding-left:12px}
+.cue b{color:var(--c)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+td:first-child{white-space:nowrap}
+.tbl{overflow-x:auto}
+figure{margin:14px 0} figure img{max-width:100%;border-radius:10px;border:1px solid var(--line);display:block}
+figcaption{color:var(--muted);font-size:13px;margin-top:6px}
+.note{background:var(--panel2);border:1px solid var(--line);border-left:4px solid var(--purple);border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14px}
+.pill{display:inline-block;font-size:12px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:middle}
+.hide{display:none!important}
+#nores{color:var(--muted)}
+.menu{display:none}
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr}
+  aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}
+  nav{display:none} nav.open{display:block}
+  .menu{display:block;width:100%;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--panel2);color:var(--text);font:inherit;margin-bottom:8px}
+  main{padding:24px 16px 60px}
+  h1{font-size:26px} header.hero img{width:64px;height:64px}
+  td:first-child{white-space:normal}
+}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.7.0</small></div></div>
+  <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
+  <button class="menu" id="menu">Contents</button>
+  <nav id="nav">
+    <div class="grp">Start</div>
+    <a href="#overview">Overview</a>
+    <a href="#install">Installing</a>
+    <a href="#colours">The three colours</a>
+    <div class="grp">On screen</div>
+    <a href="#hud">The HUD</a>
+    <a href="#halo">The combat halo</a>
+    <a href="#recap">Fight recap (DMG)</a>
+    <a href="#how">How am I doing (HOW)</a>
+    <a href="#extras">Warnings and glows</a>
+    <a href="#minimap">Minimap button</a>
+    <div class="grp">How it decides</div>
+    <a href="#engine">Detection and scanning</a>
+    <a href="#forever">Built for WoW: Forever</a>
+    <a href="#mana">Mana plans</a>
+    <a href="#groups">Groups, threat and roles</a>
+    <a href="#learning">Learning from your fights</a>
+    <a href="#racials">Racials</a>
+    <a href="#languages">Any game language</a>
+    <div class="grp">Classes</div>
+    <a href="#hunter">Hunter</a><a href="#priest">Priest</a><a href="#warrior">Warrior</a>
+    <a href="#rogue">Rogue</a><a href="#mage">Mage</a><a href="#warlock">Warlock</a>
+    <a href="#druid">Druid</a><a href="#paladin">Paladin</a><a href="#shaman">Shaman</a>
+    <div class="grp">Reference</div>
+    <a href="#settings">Settings, tab by tab</a>
+    <a href="#sounds">Sounds</a>
+    <a href="#commands">Slash commands</a>
+    <a href="#bugs">Reporting a bug</a>
+    <a href="#credits">Credits</a>
+  </nav>
+  <button class="theme" id="theme">Switch light / dark</button>
+</aside>
+
+<main>
+<header class="hero">
+  <img src="img/icon.png" alt="ForeCast icon">
+  <div>
+    <h1>ForeCast</h1>
+    <p class="tag">See your next cast before you need it. A rotation coach for every class in WoW: Forever, at every level.</p>
+  </div>
+</header>
+<p id="nores" class="hide">Nothing matches that search.</p>
+
+<section id="overview" data-s>
+<h2>Overview</h2>
+<p>ForeCast watches the fight and lights up the right ability at the right moment. It works out your class, race, level, trained spells and ranks, talents, form or stance, pet and group by itself, from level 1 to the cap.</p>
+<p>It never casts anything on its own. It shows you what to press, and the icons are clickable buttons if you want to click them.</p>
+<figure><img src="img/hud-how.png" alt="The ForeCast HUD with the HOW AM I DOING window beside it" loading="lazy"><figcaption>The HUD (hunter) with the HOW AM I DOING window open beside it.</figcaption></figure>
+</section>
+
+<section id="install" data-s>
+<h2>Installing</h2>
+<p>Install from CurseForge, or unzip <code>ForeCast-x.y.z.zip</code> into your game's <code>Interface\AddOns</code> folder so you have <code>Interface\AddOns\ForeCast\ForeCast.toc</code>. Log in, and the HUD appears. Type <code>/fc</code> for settings.</p>
+<p>Settings are saved per character.</p>
+</section>
+
+<section id="colours" data-s>
+<h2>The three colours</h2>
+<div class="grid">
+  <div class="card cue" style="--c:var(--red)"><b>Red: cast now.</b><br>The icon grows with a bold red border. It turns red inside your spell queue window, so your press fires the instant the ability is ready.</div>
+  <div class="card cue" style="--c:var(--green)"><b>Green: get ready.</b><br>The ability that turns red next, with a countdown. Reactive abilities (Overpower, Revenge, Riposte) show green "press if it lights up".</div>
+  <div class="card cue" style="--c:var(--gold)"><b>Yellow / gold: wait.</b><br>Let Auto Shot land, let your wand shoot, or hold your damage for threat. Gold borders also mark big cooldowns that are ready.</div>
+</div>
+</section>
+
+<section id="hud" data-s>
+<h2>The HUD</h2>
+<p>The main ForeCast window. Drag it by its title strip, or lock it in settings.</p>
+<h3>Icon rows</h3>
+<p>Two rows of clickable icons by default. For hunters, the top row is ranged and the bottom row melee, and only the row for your current range is live. For other classes, attacks are on top and defence, healing and buffs below. Turn off <em>Two rows of clickable buttons</em> for one compact row. Heals and self-buffs cast on you even with an enemy targeted.</p>
+<p>Auto Shot, Attack and wand Shoot are on the bar too, shown with your weapon's picture. Clicking them starts them and never switches them off.</p>
+<h3>Cue text and NEXT</h3>
+<p>The line at the top right says what to do in words, such as <code>CAST ARCANE SHOT</code>, <code>GET READY: SERPENT STING 1.2s</code>, <code>LET THE TANK PULL</code> or <code>WAITING FOR TARGET</code>. <em>Show the next two spells above the HUD</em> adds a NEXT strip.</p>
+<h3>Range band</h3>
+<p>Coloured blocks for each range zone, with the one you're in lit. For hunters these are CLOSE, DEAD ZONE, RANGED and OUT.</p>
+<h3>Threat bar</h3>
+<p>Your threat on the target, with "AGGRO ON YOU" when the mob turns on you.</p>
+<h3>Power and DPS bars</h3>
+<p>The power bar shows mana, rage or energy. The DPS bar is the fight's running average (all damage so far divided by time in combat). The gold line on it is your average over past fights.</p>
+<h3>Class panel</h3>
+<p>Along the bottom: an indicator (aspect, stance, buffs, poisons or armor, depending on class) and a unit panel (your pet or demon, or your health with your heal threshold). Each can be turned off in settings.</p>
+<h3>Size, look and visibility</h3>
+<ul>
+  <li><b>HUD size</b>: 50–200%. It keeps its centre where you put it.</li>
+  <li><b>Icons only</b>: hides everything but the icon rows, so the HUD becomes a button bar. Right-click it for settings.</li>
+  <li><b>Look</b>: Modern (flat) or Classic WoW (Blizzard's dialog and tooltip artwork).</li>
+  <li><b>Background opacity</b>, <b>border thickness</b> (0 = no border) and <b>border colour</b> (any colour, or your class colour).</li>
+  <li><b>Out of combat</b>: Show, Fade or Hide the HUD.</li>
+</ul>
+<div class="note">The HUD's layout only changes out of combat. The game locks clickable buttons during a fight, so size and icon changes made in combat apply when it ends.</div>
+</section>
+
+<section id="halo" data-s>
+<h2>The combat halo <span class="pill">new in 0.7</span></h2>
+<p>Glowing arcs around your character, so your eyes stay on your character and the red comes up at the edge of your vision. Turn it on under <b>Settings › Halo</b> or with <code>/fc halo</code>. It shows whenever a living enemy is targeted.</p>
+<h3>Arcs</h3>
+<p>Only the arc on the side of the suggested spell lights up. It pulses red when it's time to press, fills up in green as the next spell comes off cooldown, and stays gold while you should wait.</p>
+<h3>Spells on the halo</h3>
+<table>
+<tr><th>Layout</th><th>What you see</th></tr>
+<tr><td>All around the ring</td><td>Every rotation spell, half on each side.</td></tr>
+<tr><td>Ranged left, melee right</td><td>The hunter default. Spells in both rows (pet, defence, big cooldowns) sit once, in a row along the bottom.</td></tr>
+<tr><td>One icon below</td><td>Just the spell to press, under your feet, with ready big cooldowns in a row above your head.</td></tr>
+</table>
+<p>Spells that aren't suggested stay faded. The suggested one is full colour and bigger, and ready big cooldowns turn gold.</p>
+<h3>Clicking</h3>
+<p>In the ring layouts each icon can be clicked to cast it in combat (<em>Click the spells on the halo</em>). Out of combat, and when your target is dead, nothing on the halo catches your clicks, so you can loot and target through it.</p>
+<div class="note">The single "one icon below" can't be clicked. In combat the game won't let any addon change what one button casts, so that box greys out in that layout.</div>
+<h3>Readouts</h3>
+<p>With these the halo can stand in for the window:</p>
+<ul>
+  <li><b>Power bar</b> inside the left arc (mana, rage or energy).</li>
+  <li><b>Pet health</b> inside the right arc (your own health if you have no pet).</li>
+  <li><b>Stats</b> above the halo: <code>ON YOU</code>, DPS, threat and time to kill.</li>
+</ul>
+<h3>Placing it</h3>
+<p>Sliders for halo size, width (how far apart the two sides are), icon size and opacity. Untick <b>Lock halo position</b> and drag it. <b>Reset halo position</b> puts it back around your character. <b>Halo only</b> hides the ForeCast window entirely; settings stay on the minimap button and <code>/fc</code>.</p>
+</section>
+
+<section id="recap" data-s>
+<h2>Fight recap (DMG)</h2>
+<figure><img src="img/hud-recap.png" alt="The last fight recap tile beside the HUD" loading="lazy"><figcaption>After a fight: total damage, DPS, and the split by spell and pet.</figcaption></figure>
+<p>When a fight ends, a tile pops up beside the HUD for a few seconds. It shows your damage split by spell (and pet) as bars, with the fight's total and average DPS. The <b>DMG</b> button opens the last fight any time, as does <code>/fc recap</code>.</p>
+<p><b>Live damage</b>: during a fight, DMG shows your damage by spell as it happens. Percentages appear only after the fight, because Forever hides the numbers from addon maths in combat. The setting <em>Live damage during every fight</em> opens it automatically.</p>
+</section>
+
+<section id="how" data-s>
+<h2>How am I doing (HOW)</h2>
+<p>The <b>HOW</b> button compares your DPS in fights where you followed the cues well against fights where you didn't, and fast reactions against slow ones, over your last 100 fights. It shows:</p>
+<ul>
+  <li>DPS when you follow the cues against when you don't.</li>
+  <li>Last fight's grade, and your personal best.</li>
+  <li>Cues followed, your reaction time, and cues missed per fight.</li>
+  <li>Your most missed spells.</li>
+</ul>
+<p>Only fights where 3 or more cues were shown count. Set-up cues (marks, sending the pet) don't count as misses. Clear it with <b>Reset HOW stats</b> or <code>/fc how reset</code>.</p>
+</section>
+
+<section id="extras" data-s>
+<h2>Warnings and glows</h2>
+<h3>Danger rating</h3>
+<p>Before you pull, your target is rated <b>SAFE</b>, <b>CAREFUL</b>, <b>DANGER</b> or <b>DEADLY</b>. The rating weighs its level against yours, elite or rare status, enemy players, and other idle mobs close by, and drops one step when you're grouped. <code>/fc danger</code> explains the rating.</p>
+<h3>LOW HEALTH warning</h3>
+<p>Below your threshold (35% by default, <code>/fc lowhp &lt;5-90&gt;</code>), the HUD warns you and shows your escapes that are ready, plus your best healing potion.</p>
+<h3>Glow on your own action bars</h3>
+<p>Optionally glows the suggested spell on Blizzard's action bars, so you can keep your eyes on your usual buttons.</p>
+<h3>Combat focus</h3>
+<p>Optional: in combat everything else on screen fades away and only ForeCast shows. It all comes back when combat ends. Your keybinds keep working, and name plates and the game world aren't touched.</p>
+</section>
+
+<section id="minimap" data-s>
+<h2>Minimap button</h2>
+<p>On by default. Click it to open settings, drag it around the minimap, and hover it to see its name. Turn it off under Settings › HUD.</p>
+</section>
+
+<section id="engine" data-s>
+<h2>Detection and scanning</h2>
+<p>ForeCast reads your class, race, level, every trained spell and rank, talents, form or stance, pet and group. It rescans by itself whenever you learn something new. A manual scan is also available (<code>/fc rescan</code>).</p>
+<p><code>/fc spells</code> lists your learned spells in three groups: in the rotation, learned but not suggested (with the reason, for example "group damage: your call"), and unrecognised. <code>/fc report</code> prints everything that was detected.</p>
+</section>
+
+<section id="forever" data-s>
+<h2>Built for WoW: Forever</h2>
+<p>Forever hides health, mana and cooldowns from addons during combat. ForeCast works around that:</p>
+<ul>
+  <li><b>Cooldown prediction</b>: cooldowns are predicted from your own casts, and the real numbers are learned out of combat.</li>
+  <li><b>Combo points, forms and DoTs</b> are tracked from your casts when the game hides them.</li>
+  <li><b>Heals still light up</b>: below your threshold the game itself fades your heal in as the red cue, even while it hides your health.</li>
+  <li><b>Reactive abilities</b> (Overpower, Revenge, Riposte) show "press if it lights up", because the dodge or parry that enables them is hidden.</li>
+  <li><b>Mana</b> is estimated from what your spells cost while it is hidden. A <code>~</code> in front of the number means it's an estimate.</li>
+</ul>
+</section>
+
+<section id="mana" data-s>
+<h2>Mana plans</h2>
+<p>Choose how ForeCast spends your mana (Settings › Rotation, or <code>/fc mana</code>):</p>
+<table>
+<tr><th>Plan</th><th>What it does</th></tr>
+<tr><td>Spend freely</td><td>Casts whenever it's worth it. Best when you drink between pulls anyway.</td></tr>
+<tr><td>Balanced</td><td>The default. Fillers and DoTs give way to your wand or Auto Shot as mana runs low.</td></tr>
+<tr><td>Save for the next pulls</td><td>Keeps more mana back for chain pulling.</td></tr>
+</table>
+<p>Out of combat with low mana, the cue tells you to drink.</p>
+</section>
+
+<section id="groups" data-s>
+<h2>Groups, threat and roles</h2>
+<p><b>Manage threat in groups</b> is on by default:</p>
+<ul>
+  <li>No opener before the tank pulls (<code>LET THE TANK PULL</code>).</li>
+  <li>Damage turns yellow at 85% of the tank's threat, and comes back 10 points below.</li>
+  <li>When you pull aggro, your class's threat dump lights up: Feign Death, Fade, Feint and so on.</li>
+</ul>
+<p><b>Role</b> (warrior, druid, paladin): <em>Auto</em> works it out from your stance, form or Righteous Fury, or you can force Damage or Tank. Tanks are never held back, and get a taunt cue when a mob gets loose.</p>
+<p><b>Coordinate with party members</b> who use ForeCast, QuiverShift or Smite Club. The tank gets a head start, and damage holds when the tank loses the mob. <code>/fc group</code> shows who is linked.</p>
+</section>
+
+<section id="learning" data-s>
+<h2>Learning from your fights</h2>
+<p>On by default, kept per character. Averages lean towards recent fights, so they follow your gear and level.</p>
+<table>
+<tr><th>What</th><th>How it's used</th></tr>
+<tr><td>Fight length</td><td>How long each kind of mob lasts for you (elite or normal, creature type, level difference). After 5 kills of a kind, the time-to-kill estimate uses it, so DoTs and cooldowns are judged by how your fights really go.</td></tr>
+<tr><td>Damage per cast</td><td>Each spell's damage, from the game's meter after each fight.</td></tr>
+<tr><td>Reaction time</td><td>How long you take from a red cue to your cast.</td></tr>
+</table>
+<p><code>/fc learn</code> shows what it has learned. <code>/fc learn reset</code> or <b>Reset learning</b> clears it.</p>
+</section>
+
+<section id="racials" data-s>
+<h2>Racials</h2>
+<p>Blood Fury and Berserking as damage cooldowns, War Stomp and Arcane Torrent as interrupts, and Stoneform and Gift of the Naaru when you're in trouble.</p>
+</section>
+
+<section id="languages" data-s>
+<h2>Any game language</h2>
+<p>ForeCast works on English, Korean, German and other clients. It matches spells, buffs, forms and creature types by their game IDs, so translated names don't matter, and clicks cast in your client's own language. Cue text is shown in English.</p>
+</section>
+
+<section id="hunter" data-s>
+<h2>Hunter</h2>
+<p>Beast Mastery leveling. Ranged and melee rows switch with your range. Hunter's Mark on longer fights, Serpent Sting, Arcane Shot and Concussive Shot at range, Raptor Strike and Mongoose Bite in melee, and Auto Shot weaving. Pet Attack is on the bar, with Mend Pet below your threshold. Bestial Wrath and Rapid Fire are big cooldowns. Intimidation or Feign Death are used when you pull aggro.</p>
+<table>
+<tr><th>Setting</th><th>Default</th></tr>
+<tr><td>Mend Pet below X% pet health (slider)</td><td>25%</td></tr>
+<tr><td>Remind me to use Hunter's Mark on longer fights</td><td>On</td></tr>
+<tr><td>Managed threat: Intimidation when you pull aggro</td><td>On</td></tr>
+<tr><td>Suggest Disengage to hand aggro back to your pet</td><td>Off</td></tr>
+<tr><td>Suggest stepping in to weave Immolation Trap at range</td><td>Off</td></tr>
+<tr><td>Aspect indicator · Pet check (actions, health, autocast)</td><td>On</td></tr>
+</table>
+<p>Commands: <code>/fc pet</code> (what the game reports about your pet), <code>/fc hawk &lt;seconds&gt;</code> (tune Summon Hawk's lifetime).</p>
+</section>
+
+<section id="priest" data-s>
+<h2>Priest</h2>
+<p>Shadow leveling. Shadow Word: Pain, Mind Blast and Mind Flay, then your wand as mana runs low, with Shadowform. Power Word: Shield before pulls, and self-heals below your threshold.</p>
+<table>
+<tr><th>Setting</th><th>Default</th></tr>
+<tr><td>Self-heal below X% (slider)</td><td>40%</td></tr>
+<tr><td>Shield yourself before each pull (Power Word: Shield)</td><td>On</td></tr>
+<tr><td>Suggest Psychic Scream when mobs are on you and you are low</td><td>On</td></tr>
+</table>
+<p>Command: <code>/fc self</code> (what the game reports about your health, heal and wand).</p>
+</section>
+
+<section id="warrior" data-s>
+<h2>Warrior</h2>
+<p>Charge opener, Victory Rush after kills, Execute, Mortal Strike, Bloodthirst or Shield Slam, Rend and Battle Shout. Tanks in Defensive Stance get Taunt, Thunder Clap, Sunder Armor, Shield Block and Revenge.</p>
+<table>
+<tr><th>Setting</th><th>Default</th></tr>
+<tr><td>Suggest Heroic Strike with spare rage</td><td>On</td></tr>
+<tr><td>Open with Charge</td><td>On</td></tr>
+<tr><td>Stance indicator (and Battle Shout)</td><td>On</td></tr>
+</table>
+</section>
+
+<section id="rogue" data-s>
+<h2>Rogue</h2>
+<p>Cheap Shot or Ambush from Stealth, combo point builders, Eviscerate at 3+ points (5 on long fights), and Slice and Dice and Rupture when they pay off. Kick, Gouge and Kidney Shot interrupt. Evasion and Vanish when things go wrong, plus a poison check.</p>
+<table>
+<tr><th>Setting</th><th>Default</th></tr>
+<tr><td>Open with Ambush instead of Cheap Shot (dagger builds)</td><td>Off</td></tr>
+<tr><td>Use Backstab as a builder (you stand behind the target)</td><td>Off</td></tr>
+<tr><td>Poison check and combo points indicator</td><td>On</td></tr>
+</table>
+</section>
+
+<section id="mage" data-s>
+<h2>Mage</h2>
+<p>Armor and Arcane Intellect before the pull, then Frostbolt (or Fireball or Arcane Missiles). Ice Lance on frozen targets and with Fingers of Frost, Frost Nova when a mob reaches you, Counterspell, Ice Barrier and Ice Block, and your wand when your mana plan says to save.</p>
+<table>
+<tr><th>Setting</th><th>Default</th></tr>
+<tr><td>Wand a slowed target between Frostbolts (saves mana)</td><td>Off</td></tr>
+<tr><td>Buff indicator (armor, Arcane Intellect)</td><td>On</td></tr>
+</table>
+</section>
+
+<section id="warlock" data-s>
+<h2>Warlock</h2>
+<p>Summon and send your demon, then Bane of Agony, Corruption and Immolate, then your wand (or Shadow Bolt). Nightfall procs, Drain Life below your threshold, Drain Soul when you need shards, Life Tap before pulls, and a demon panel.</p>
+<table>
+<tr><th>Setting</th><th>Default</th></tr>
+<tr><td>Drain Life below X% (slider)</td><td>35%</td></tr>
+<tr><td>Shadow Bolt as filler instead of the wand</td><td>Off</td></tr>
+<tr><td>Life Tap before pulls when health is high and mana low</td><td>On</td></tr>
+</table>
+</section>
+
+<section id="druid" data-s>
+<h2>Druid</h2>
+<p>Follows your form. Caster: Moonfire and Wrath. Cat: Prowl, Shred, Rake, Claw, then Ferocious Bite or Rip. Bear: Enrage, Demoralizing Roar and Maul, and tanks automatically. Rejuvenation, Regrowth and Healing Touch below your threshold.</p>
+<table>
+<tr><th>Setting</th><th>Default</th></tr>
+<tr><td>Heal yourself below X% (slider)</td><td>50%</td></tr>
+<tr><td>In Cat Form, Prowl before the pull and open with Shred</td><td>On</td></tr>
+<tr><td>Remind me to shift into my fighting form before pulls</td><td>On</td></tr>
+<tr><td>Buff indicator (Mark of the Wild, Thorns)</td><td>On</td></tr>
+</table>
+</section>
+
+<section id="paladin" data-s>
+<h2>Paladin</h2>
+<p>Keeps the right Seal up: Command with a slow weapon (3.8 s or more), Righteousness otherwise. Holy Strike and Judgement on cooldown, Exorcism on undead and demons, Hammer of Wrath, and Flash of Light or Holy Light below your threshold. Tanks with Righteous Fury.</p>
+<table>
+<tr><th>Setting</th><th>Default</th></tr>
+<tr><td>Heal yourself below X% (slider)</td><td>40%</td></tr>
+<tr><td>Buff indicator (blessing, aura, Righteous Fury) · Health and seal panel</td><td>On</td></tr>
+</table>
+</section>
+
+<section id="shaman" data-s>
+<h2>Shaman</h2>
+<p>Lightning Shield and a weapon imbue before the pull, Searing Totem, a Flame Shock pull, Stormstrike into Earth Shock, Lightning Bolt on 5 Maelstrom Weapon stacks, and healing waves below your threshold.</p>
+<table>
+<tr><th>Setting</th><th>Default</th></tr>
+<tr><td>Heal yourself below X% (slider)</td><td>40%</td></tr>
+<tr><td>Drop Searing Totem before the pull</td><td>On</td></tr>
+<tr><td>Buff indicator (Lightning Shield, weapon imbue) · Health and totem panel</td><td>On</td></tr>
+</table>
+</section>
+
+<section id="settings" data-s>
+<h2>Settings, tab by tab</h2>
+<p>Open with <code>/fc</code>, the minimap button, or by right-clicking the HUD. The window remembers the last tab you used.</p>
+<h3>HUD</h3>
+<div class="tbl"><table>
+<tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
+<tr><td>Class slider</td><td>Your class's threshold (Mend Pet, self-heal, Drain Life…)</td><td>Varies</td></tr>
+<tr><td>Show HUD</td><td>Shows or hides the window</td><td>On</td></tr>
+<tr><td>Lock HUD position</td><td>Stops dragging</td><td>Off</td></tr>
+<tr><td>Icons only</td><td>Just the button bar</td><td>Off</td></tr>
+<tr><td>Two rows of clickable buttons</td><td>Two rows, or one compact row</td><td>On</td></tr>
+<tr><td>Power bar</td><td>Mana, rage or energy above the range band</td><td>On</td></tr>
+<tr><td>Show the next two spells (NEXT)</td><td>A strip above the HUD</td><td>Off</td></tr>
+<tr><td>Indicator · panel</td><td>Your class's bottom row</td><td>On</td></tr>
+<tr><td>Minimap button</td><td>Shows the minimap button</td><td>On</td></tr>
+<tr><td>HUD size</td><td>50–200%</td><td>105%</td></tr>
+<tr><td>Out of combat</td><td>Show, Fade or Hide</td><td>Show</td></tr>
+<tr><td>Reset HUD position</td><td>Puts it back above your action bars</td><td></td></tr>
+</table></div>
+<h3>Look</h3>
+<div class="tbl"><table>
+<tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
+<tr><td>Look</td><td>Modern or Classic WoW</td><td>Modern</td></tr>
+<tr><td>Background opacity</td><td>0–100% behind the HUD and recap</td><td>100%</td></tr>
+<tr><td>Border thickness</td><td>0 (none) to 8</td><td>1</td></tr>
+<tr><td>Border colour</td><td>Opens the colour picker; <em>Class colour</em> resets it</td><td>Class colour</td></tr>
+<tr><td>Glow on my own action bars</td><td>Glows the suggested spell on Blizzard's bars</td><td>On</td></tr>
+<tr><td>Combat focus</td><td>In combat, hides everything else on screen</td><td>Off</td></tr>
+</table></div>
+<h3>Rotation</h3>
+<div class="tbl"><table>
+<tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
+<tr><td>Class options</td><td>See your class above</td><td>Varies</td></tr>
+<tr><td>Big cooldowns are my call</td><td>1 min+ cooldowns show gold when ready and never hold up the rotation. Off: they come up red like any other spell.</td><td>On</td></tr>
+<tr><td>Manage threat in groups</td><td>See <a href="#groups">Groups</a></td><td>On</td></tr>
+<tr><td>Coordinate with party members</td><td>Links with other ForeCast, QuiverShift and Smite Club users</td><td>On</td></tr>
+<tr><td>Danger rating</td><td>Rates targets before you pull</td><td>On</td></tr>
+<tr><td>LOW HEALTH warning</td><td>Escapes and best potion when low</td><td>On</td></tr>
+<tr><td>Learn from my fights</td><td>See <a href="#learning">Learning</a></td><td>On</td></tr>
+<tr><td>Mana plan</td><td>See <a href="#mana">Mana plans</a></td><td>Balanced</td></tr>
+<tr><td>Role (tanking classes)</td><td>Auto, Damage or Tank</td><td>Auto</td></tr>
+<tr><td>Manual scan · Reset learning</td><td>Rescan spells and talents; clear what was learned</td><td></td></tr>
+</table></div>
+<h3>Damage</h3>
+<div class="tbl"><table>
+<tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
+<tr><td>Session-average DPS bar</td><td>The DPS bar on the HUD</td><td>On</td></tr>
+<tr><td>Damage recap after each fight</td><td>The tile that pops up</td><td>On</td></tr>
+<tr><td>Live damage during every fight</td><td>Opens DMG automatically in combat</td><td>On</td></tr>
+<tr><td>Reset DPS benchmark · Reset HOW stats</td><td>Clears the gold line and the HOW history</td><td></td></tr>
+</table></div>
+<h3>Sounds</h3>
+<p>See <a href="#sounds">Sounds</a>.</p>
+<h3>Halo</h3>
+<div class="tbl"><table>
+<tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
+<tr><td>Halo around my character</td><td>Turns the halo on</td><td>Off</td></tr>
+<tr><td>Lock halo position</td><td>Untick to drag it</td><td>On</td></tr>
+<tr><td>Halo only</td><td>Hides the ForeCast window</td><td>Off</td></tr>
+<tr><td>Click the spells on the halo</td><td>Ring icons cast in combat</td><td>On</td></tr>
+<tr><td>Halo spells</td><td>Ring, ranged left / melee right, or one icon below</td><td>Split (hunter), ring (others)</td></tr>
+<tr><td>Halo size · width · icon size</td><td>50–200% · 50–250% · 50–200%</td><td>100%</td></tr>
+<tr><td>Halo opacity</td><td>10–100%</td><td>100%</td></tr>
+<tr><td>Power bar · pet health · stats</td><td>Readouts on the halo</td><td>On</td></tr>
+<tr><td>Reset halo position</td><td>Back around your character</td><td></td></tr>
+</table></div>
+</section>
+
+<section id="sounds" data-s>
+<h2>Sounds</h2>
+<p>Original sound cues made for ForeCast (no game audio). Each plays once when its event starts. Turning one on in settings plays it, and you can choose the channel (Master, Sound effects or Dialog).</p>
+<table>
+<tr><th>Sound</th><th>When</th><th>Default</th></tr>
+<tr><td>Interrupt</td><td>Your target starts a cast you can interrupt</td><td>On</td></tr>
+<tr><td>Aggro</td><td>A mob turns on you after the first seconds of a pull, or gets loose when you tank</td><td>Off</td></tr>
+<tr><td>Proc</td><td>Nightfall, Hot Streak, Missile Barrage, 5 Maelstrom Weapon stacks</td><td>On</td></tr>
+<tr><td>Pet down</td><td>Your pet or demon dies in a fight</td><td>On</td></tr>
+<tr><td>Practice tick</td><td>A soft tick on every new red cue</td><td>Off</td></tr>
+</table>
+<p>Test one with <code>/fc sound interrupt</code> (or aggro, proc, petdown, tick).</p>
+</section>
+
+<section id="commands" data-s>
+<h2>Slash commands</h2>
+<p><code>/fc</code> and <code>/forecast</code> work the same.</p>
+<div class="tbl"><table>
+<tr><th>Command</th><th>What it does</th></tr>
+<tr><td><code>/fc</code></td><td>Open or close settings (also <code>/fc config</code>, <code>/fc settings</code>)</td></tr>
+<tr><td><code>/fc help</code></td><td>List the commands</td></tr>
+<tr><td><code>/fc report</code></td><td>Everything ForeCast detected: paste this into bug reports</td></tr>
+<tr><td><code>/fc spells</code></td><td>Learned spells: in the rotation, not suggested (with the reason), unrecognised</td></tr>
+<tr><td><code>/fc rescan</code></td><td>Rescan spells and talents (normally automatic)</td></tr>
+<tr><td><code>/fc range</code></td><td>Raw range checks for your target</td></tr>
+<tr><td><code>/fc recap</code></td><td>Show the last fight's damage breakdown</td></tr>
+<tr><td><code>/fc meter</code></td><td>What the game's damage meter reports</td></tr>
+<tr><td><code>/fc dps</code></td><td>DPS source, last readable DPS and best</td></tr>
+<tr><td><code>/fc how</code> · <code>/fc how reset</code></td><td>Open the HOW window · clear its statistics</td></tr>
+<tr><td><code>/fc learn</code> · <code>/fc learn reset</code></td><td>What's been learned · clear it</td></tr>
+<tr><td><code>/fc mana spend|balanced|save</code></td><td>Set the mana plan (no word: show it and your mana)</td></tr>
+<tr><td><code>/fc danger</code></td><td>Your target's danger rating and why</td></tr>
+<tr><td><code>/fc lowhp &lt;5-90&gt;</code></td><td>LOW HEALTH warning threshold</td></tr>
+<tr><td><code>/fc group</code></td><td>Party members linked through coordination</td></tr>
+<tr><td><code>/fc sound &lt;name&gt;</code></td><td>Test a sound: interrupt, aggro, proc, petdown, tick</td></tr>
+<tr><td><code>/fc scale &lt;50-200&gt;</code></td><td>HUD size (also <code>/fc size</code>)</td></tr>
+<tr><td><code>/fc halo</code></td><td>Halo on or off</td></tr>
+<tr><td><code>/fc halo &lt;50-200&gt;</code> · <code>/fc halo reset</code></td><td>Halo size · move it back around your character</td></tr>
+<tr><td><code>/fc lock</code> · <code>/fc unlock</code></td><td>Lock or unlock the HUD</td></tr>
+<tr><td><code>/fc show</code> · <code>/fc hide</code></td><td>Show or hide the HUD</td></tr>
+<tr><td><code>/fc log on|off|clear</code></td><td>Beta log of cues and casts, saved to SavedVariables</td></tr>
+<tr><td><code>/fc version</code></td><td>The installed version</td></tr>
+<tr><td><code>/fc talentdebug</code> · <code>/fc talentnodes</code></td><td>Talent detection details</td></tr>
+<tr><td><code>/fc pet</code> · <code>/fc hawk &lt;s&gt;</code></td><td>Hunter only: pet report · Summon Hawk lifetime</td></tr>
+<tr><td><code>/fc self</code></td><td>Priest only: health, heal and wand report</td></tr>
+</table></div>
+</section>
+
+<section id="bugs" data-s>
+<h2>Reporting a bug</h2>
+<ol>
+  <li>Type <code>/fc log on</code>, play a few pulls, then <code>/reload</code> or log out.</li>
+  <li>Send the <code>/fc report</code> output plus the log file: <code>WTF\Account\&lt;ACCOUNT&gt;\&lt;Realm&gt;\&lt;Character&gt;\SavedVariables\ForeCast.lua</code> in your game folder.</li>
+  <li>Say what ForeCast suggested and what you think it should have suggested.</li>
+</ol>
+</section>
+
+<section id="credits" data-s>
+<h2>Credits</h2>
+<p>Rotation priorities come from the WoW Forever leveling guides on mobalytics.gg:</p>
+<ul>
+  <li>Kargoz: Hunter and Protection Warrior</li>
+  <li>doublezug: Priest</li>
+  <li>Mobalytics-Oli: Rogue and Mage</li>
+  <li>Crix: Warlock</li>
+  <li>Ruse_Cruize: Druid and Paladin</li>
+  <li>NickTew: Enhancement Shaman</li>
+</ul>
+<p>Talent data from talentsforever.com, used under CC BY 4.0. ForeCast grew out of QuiverShift (hunter) and Smite Club (priest), which continue as standalone addons on the same engine.</p>
+</section>
+</main>
+</div>
+<script>
+(function(){
+  var root=document.documentElement;
+  try{var t=localStorage.getItem('fc-theme'); if(t) root.setAttribute('data-theme',t);}catch(e){}
+  document.getElementById('theme').addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')?root.getAttribute('data-theme')==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+    var next=dark?'light':'dark'; root.setAttribute('data-theme',next);
+    try{localStorage.setItem('fc-theme',next);}catch(e){}
+  });
+  var nav=document.getElementById('nav');
+  document.getElementById('menu').addEventListener('click',function(){nav.classList.toggle('open');});
+  nav.addEventListener('click',function(e){if(e.target.tagName==='A') nav.classList.remove('open');});
+  var secs=[].slice.call(document.querySelectorAll('[data-s]'));
+  var links={}; [].forEach.call(nav.querySelectorAll('a'),function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var q=document.getElementById('search'), none=document.getElementById('nores');
+  q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase(), n=0;
+    secs.forEach(function(s){
+      var hit=!v||s.textContent.toLowerCase().indexOf(v)>=0;
+      s.classList.toggle('hide',!hit); if(links[s.id]) links[s.id].classList.toggle('hide',!hit); if(hit) n++;
+    });
+    none.classList.toggle('hide',n>0);
+  });
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&links[e.target.id]){for(var k in links) links[k].classList.remove('on'); links[e.target.id].classList.add('on');}
+    });},{rootMargin:'-10% 0px -80% 0px'});
+    secs.forEach(function(s){io.observe(s);});
+  }
+})();
+</script>
+</body>
+</html>
