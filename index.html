@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.7.2</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.7.3</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -315,7 +315,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="hunter" data-s>
 <h2>Hunter</h2>
-<p>Beast Mastery leveling. Ranged and melee rows switch with your range. Hunter's Mark on longer fights, Serpent Sting, Arcane Shot and Concussive Shot at range, Raptor Strike and Mongoose Bite in melee, and Auto Shot weaving. Pet Attack is on the bar, with Mend Pet below your threshold. Bestial Wrath and Rapid Fire are big cooldowns. Intimidation or Feign Death are used when you pull aggro.</p>
+<p>Beast Mastery leveling. Ranged and melee rows switch with your range. Hunter's Mark on longer fights, Serpent Sting on any fight of 8 seconds or more (and always before you learn Arcane Shot), Arcane Shot and Concussive Shot at range, Raptor Strike and Mongoose Bite in melee, and Auto Shot weaving. Pet Attack is on the bar, with Mend Pet below your threshold. Bestial Wrath and Rapid Fire are big cooldowns. Intimidation or Feign Death are used when you pull aggro.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Mend Pet below X% pet health (slider)</td><td>25%</td></tr>
@@ -463,6 +463,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Learn from my fights</td><td>Remembers fight lengths, damage per cast and your reaction time to tune the cues. See <a href="#learning">Learning</a>.</td><td>On</td></tr>
 <tr><td>Mana plan</td><td><b>Spend freely</b>, <b>Balanced</b> or <b>Save for the next pulls</b>. See <a href="#mana">Mana plans</a>.</td><td>Balanced</td></tr>
 <tr><td>Role (tanking classes)</td><td><b>Auto</b> detects it, or force <b>Damage</b> or <b>Tank</b>.</td><td>Auto</td></tr>
+<tr><td>Show my rotation</td><td>Opens the rotation viewer beside settings. See <a href="#viewer">Rotation viewer</a>.</td><td></td></tr>
 <tr><td>Manual scan</td><td>Rescans your spells and talents. Normally this happens on its own.</td><td></td></tr>
 <tr><td>Reset learning</td><td>Clears everything learned from your fights.</td><td></td></tr>
 </table></div>
@@ -486,6 +487,27 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Druid</td><td>Remind me to shift into my fighting form before pulls</td><td>On</td></tr>
 <tr><td>Shaman</td><td>Drop Searing Totem before the pull</td><td>On</td></tr>
 </table></div>
+
+<h3 id="viewer">Rotation viewer</h3>
+<p>ForeCast doesn't suggest the same spell every time: what comes up depends on how long the fight will be, whether you're in a party, the target and your range. The rotation viewer shows exactly that. Open it with <b>Show my rotation</b> on the Rotation tab, or <code>/fc rotation</code>. It opens beside the settings window.</p>
+<p>Pick a fight with the buttons at the top:</p>
+<ul>
+  <li><b>Fight</b>: Short (under 8 seconds), Medium (8–20) or Long (20 or more). In a real fight ForeCast estimates the length from how fast the target loses health and what it has learned from your fights.</li>
+  <li><b>Group</b>: Solo or Party.</li>
+  <li><b>Target</b>: Normal or Elite.</li>
+  <li><b>Range</b> (hunters): Ranged or Melee.</li>
+</ul>
+<p>The list below shows, for the spells you know:</p>
+<ul>
+  <li><b>Before the first shot</b> (hunters): Hunter's Mark and sending the pet.</li>
+  <li><b>Opener</b>: your class's opener for that fight, such as Pyroblast on a long fight.</li>
+  <li><b>Rotation, top first</b>: the priority order. The first spell in the list that is ready turns red. Notes say why a spell is there: <em>fights 8 s+</em>, <em>gold when ready: your call</em> (big cooldowns), <em>one at a time</em> (stings), <em>gives way at low mana</em> (fillers give way to your wand or Auto Shot when mana is low), <em>when it lights up</em>, <em>finisher</em>.</li>
+  <li><b>Between them</b>: what fires while you wait (Auto Shot, your wand or melee).</li>
+  <li><b>When the moment comes</b>: spells that wait for a proc, several targets, or a frozen or low-health target.</li>
+  <li><b>First, when needed</b>: interrupts, emergency heals and escapes, and threat tools. These jump ahead of everything else.</li>
+  <li>A line on the pull: solo the pull is yours; in a party ForeCast waits for the tank and holds your damage at 85% threat.</li>
+</ul>
+<p>Example, a level 30 mage: a short fight is just Frostbolt. A long fight opens with Pyroblast and adds Arcane Power and Combustion. Ice Lance comes up on a frozen target and Fire Blast on a low one, Counterspell on a cast, and Ice Block or Frost Nova when a mob reaches you.</p>
 
 <h3>Spells</h3>
 <p>Every spell you know that ForeCast uses, alphabetically, each with a checkbox (Auto Shot and auto attack aren't listed). Untick a spell and ForeCast ignores it completely: it is never suggested, and it leaves the HUD buttons and the halo. Tick it again and it comes back. Suggestions change at once; the click buttons change when combat ends, because the game locks them in combat. <b>Use every spell again</b> ticks them all. Spells you learn later show up the next time you open the tab.</p>
@@ -575,6 +597,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td><code>/fc lock</code> · <code>/fc unlock</code></td><td>Lock or unlock the HUD</td></tr>
 <tr><td><code>/fc show</code> · <code>/fc hide</code></td><td>Show or hide the HUD</td></tr>
 <tr><td><code>/fc log on|off|clear</code></td><td>Beta log of cues and casts, saved to SavedVariables</td></tr>
+<tr><td><code>/fc rotation</code></td><td>Open the rotation viewer</td></tr>
 <tr><td><code>/fc version</code></td><td>The installed version</td></tr>
 <tr><td><code>/fc defaults</code> · <code>/fc defaults yes</code></td><td>Explain · put every setting back to its default and reload (history is kept)</td></tr>
 <tr><td><code>/fc talentdebug</code> · <code>/fc talentnodes</code></td><td>Talent detection details</td></tr>
