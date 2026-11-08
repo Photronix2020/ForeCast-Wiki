@@ -418,76 +418,119 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="settings" data-s>
 <h2>Settings, tab by tab</h2>
-<p>Open with <code>/fc</code>, the minimap button, or by right-clicking the HUD. The window remembers the last tab you used.</p>
+<p>Open settings with <code>/fc</code>, the minimap button, or by right-clicking the HUD. Drag the title to move the window; Esc closes it. It reopens on the last tab you used. The wiki address is at the bottom of the window: click the box and press Ctrl+C to copy it.</p>
+<p>Settings are saved per character. To put them all back to the defaults, see <a href="#defaults">Back to defaults</a>.</p>
+
 <h3>HUD</h3>
+<p>The ForeCast window itself.</p>
 <div class="tbl"><table>
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
-<tr><td>Class slider</td><td>Your class's threshold (Mend Pet, self-heal, Drain Life…)</td><td>Varies</td></tr>
-<tr><td>Show HUD</td><td>Shows or hides the window</td><td>On</td></tr>
-<tr><td>Lock HUD position</td><td>Stops dragging</td><td>Off</td></tr>
-<tr><td>Icons only</td><td>Just the button bar</td><td>Off</td></tr>
-<tr><td>Two rows of clickable buttons</td><td>Two rows, or one compact row</td><td>On</td></tr>
-<tr><td>Power bar</td><td>Mana, rage or energy above the range band</td><td>On</td></tr>
-<tr><td>Show the next two spells (NEXT)</td><td>A strip above the HUD</td><td>Off</td></tr>
-<tr><td>Indicator · panel</td><td>Your class's bottom row</td><td>On</td></tr>
-<tr><td>Minimap button</td><td>Shows the minimap button</td><td>On</td></tr>
-<tr><td>HUD size</td><td>50–200%</td><td>105%</td></tr>
-<tr><td>Out of combat</td><td>Show, Fade or Hide</td><td>Show</td></tr>
-<tr><td>Reset HUD position</td><td>Puts it back above your action bars</td><td></td></tr>
+<tr><td>Class slider</td><td>Your class's safety threshold, for example <em>Mend Pet below 25% pet health</em> or <em>Heal yourself below 40% health</em>. Below it, that spell takes over the cue. Each class's value is listed in its section.</td><td>Varies</td></tr>
+<tr><td>Show HUD</td><td>Shows or hides the window. Ticking it also turns off <em>Halo only</em>.</td><td>On</td></tr>
+<tr><td>Lock HUD position</td><td>When unlocked, drag the window by its title strip.</td><td>Off</td></tr>
+<tr><td>Icons only</td><td>Shrinks the HUD to just its button bar, with no text or bars. Right-click the bar (or type <code>/fc</code>) for settings. Switches when combat ends.</td><td>Off</td></tr>
+<tr><td>Two rows of clickable buttons</td><td>Two rows of buttons you can click to cast (for example damage on top, defense below). Off: one compact row. Switches when combat ends.</td><td>On</td></tr>
+<tr><td>Power bar</td><td>Your mana, rage or energy above the range band.</td><td>On</td></tr>
+<tr><td>Show the next two spells (NEXT)</td><td>A small strip above the HUD with the two spells coming after the current one.</td><td>Off</td></tr>
+<tr><td>Class indicator</td><td>Your class's reminder icon: aspect, stance, armor, buffs, poisons and combo points.</td><td>On</td></tr>
+<tr><td>Class panel</td><td>The class panel at the bottom: pet check, health, seal, totems or demon.</td><td>On</td></tr>
+<tr><td>Minimap button</td><td>Left-click opens settings; drag it around the minimap.</td><td>On</td></tr>
+<tr><td>HUD size</td><td>50–200%. Changes when combat ends.</td><td>105%</td></tr>
+<tr><td>Out of combat</td><td>What the HUD does when you're not fighting and have no enemy targeted: <b>Show</b>, <b>Fade</b> (30%) or <b>Hide</b>.</td><td>Show</td></tr>
+<tr><td>Reset HUD position</td><td>Puts the HUD back, centered above your action bars.</td><td></td></tr>
 </table></div>
+
 <h3>Look</h3>
 <div class="tbl"><table>
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
-<tr><td>Look</td><td>Modern or Classic WoW</td><td>Modern</td></tr>
-<tr><td>Background opacity</td><td>0–100% behind the HUD and recap</td><td>100%</td></tr>
-<tr><td>Border thickness</td><td>0 (none) to 8</td><td>1</td></tr>
-<tr><td>Border color</td><td>Opens the color picker; <em>Class color</em> resets it</td><td>Class color</td></tr>
-<tr><td>Glow on my own action bars</td><td>Glows the suggested spell on Blizzard's bars</td><td>On</td></tr>
-<tr><td>Combat focus</td><td>In combat, hides everything else on screen</td><td>Off</td></tr>
+<tr><td>Look</td><td><b>Modern</b> (flat, dark) or <b>Classic WoW</b> (Blizzard-style frames).</td><td>Modern</td></tr>
+<tr><td>Background opacity</td><td>0–100% for the panel behind the HUD and the recap. Icons and text stay solid. Works in combat.</td><td>100%</td></tr>
+<tr><td>Border thickness</td><td>0 (no border) to 8.</td><td>1</td></tr>
+<tr><td>Border color</td><td>Click the swatch to open the color picker. <b>Class color</b> goes back to your class's color.</td><td>Class color</td></tr>
+<tr><td>Glow on my own action bars</td><td>Also glows the suggested spell on Blizzard's action bars, so you can play from your own bars.</td><td>On</td></tr>
+<tr><td>In combat, hide everything else</td><td>Combat focus: in combat only ForeCast shows; the rest of the UI comes back when the fight ends.</td><td>Off</td></tr>
 </table></div>
+
 <h3>Rotation</h3>
+<p>Your class's own options come first (see the table below), then these:</p>
 <div class="tbl"><table>
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
-<tr><td>Class options</td><td>See your class above</td><td>Varies</td></tr>
-<tr><td>Big cooldowns are my call</td><td>1 min+ cooldowns show gold when ready and never hold up the rotation. Off: they come up red like any other spell.</td><td>On</td></tr>
-<tr><td>Manage threat in groups</td><td>See <a href="#groups">Groups</a></td><td>On</td></tr>
-<tr><td>Coordinate with party members</td><td>Links with other ForeCast, QuiverShift and Smite Club users</td><td>On</td></tr>
-<tr><td>Danger rating</td><td>Rates targets before you pull</td><td>On</td></tr>
-<tr><td>LOW HEALTH warning</td><td>Escapes and best potion when low</td><td>On</td></tr>
-<tr><td>Learn from my fights</td><td>See <a href="#learning">Learning</a></td><td>On</td></tr>
-<tr><td>Mana plan</td><td>See <a href="#mana">Mana plans</a></td><td>Balanced</td></tr>
-<tr><td>Role (tanking classes)</td><td>Auto, Damage or Tank</td><td>Auto</td></tr>
-<tr><td>Manual scan · Reset learning</td><td>Rescan spells and talents; clear what was learned</td><td></td></tr>
+<tr><td>Big cooldowns are my call</td><td>Cooldowns of a minute or more turn gold when ready, and the rotation never waits for them. Off: they come up red like any other spell.</td><td>On</td></tr>
+<tr><td>Manage threat in groups</td><td>In a party, waits for the tank to pull and holds your damage at 85% threat (plus your class's threat dump). See <a href="#groups">Groups</a>.</td><td>On</td></tr>
+<tr><td>Coordinate with party members</td><td>Links with party members using ForeCast, QuiverShift or Smite Club to share the pull and threat.</td><td>On</td></tr>
+<tr><td>Danger rating</td><td>Rates your target before you pull, from its level, type and what you've learned about it.</td><td>On</td></tr>
+<tr><td>LOW HEALTH warning</td><td>Below the threshold (<code>/fc lowhp</code>, 35% by default) it shows your escapes that are ready and your best potion.</td><td>On</td></tr>
+<tr><td>Learn from my fights</td><td>Remembers fight lengths, damage per cast and your reaction time to tune the cues. See <a href="#learning">Learning</a>.</td><td>On</td></tr>
+<tr><td>Mana plan</td><td><b>Spend freely</b>, <b>Balanced</b> or <b>Save for the next pulls</b>. See <a href="#mana">Mana plans</a>.</td><td>Balanced</td></tr>
+<tr><td>Role (tanking classes)</td><td><b>Auto</b> detects it, or force <b>Damage</b> or <b>Tank</b>.</td><td>Auto</td></tr>
+<tr><td>Manual scan</td><td>Rescans your spells and talents. Normally this happens on its own.</td><td></td></tr>
+<tr><td>Reset learning</td><td>Clears everything learned from your fights.</td><td></td></tr>
 </table></div>
+<p>Class options on this tab:</p>
+<div class="tbl"><table>
+<tr><th>Class</th><th>Option</th><th>Default</th></tr>
+<tr><td>Hunter</td><td>Remind me to use Hunter's Mark on longer fights</td><td>On</td></tr>
+<tr><td>Hunter</td><td>Managed threat: Intimidation when you pull aggro</td><td>On</td></tr>
+<tr><td>Hunter</td><td>Suggest Disengage to hand aggro back to your pet</td><td>Off</td></tr>
+<tr><td>Hunter</td><td>Suggest stepping in to weave Immolation Trap at range</td><td>Off</td></tr>
+<tr><td>Priest</td><td>Shield yourself before each pull (Power Word: Shield)</td><td>On</td></tr>
+<tr><td>Priest</td><td>Suggest Psychic Scream when mobs are on you and you are low</td><td>On</td></tr>
+<tr><td>Warrior</td><td>Suggest Heroic Strike with spare rage</td><td>On</td></tr>
+<tr><td>Warrior</td><td>Open with Charge</td><td>On</td></tr>
+<tr><td>Rogue</td><td>Open with Ambush instead of Cheap Shot (dagger builds)</td><td>Off</td></tr>
+<tr><td>Rogue</td><td>Use Backstab as a builder (you stand behind the target)</td><td>Off</td></tr>
+<tr><td>Mage</td><td>Wand a slowed target between Frostbolts (saves mana)</td><td>Off</td></tr>
+<tr><td>Warlock</td><td>Shadow Bolt as filler instead of the wand</td><td>Off</td></tr>
+<tr><td>Warlock</td><td>Life Tap before pulls when health is high and mana low</td><td>On</td></tr>
+<tr><td>Druid</td><td>In Cat Form, Prowl before the pull and open with Shred</td><td>On</td></tr>
+<tr><td>Druid</td><td>Remind me to shift into my fighting form before pulls</td><td>On</td></tr>
+<tr><td>Shaman</td><td>Drop Searing Totem before the pull</td><td>On</td></tr>
+</table></div>
+
 <h3>Spells</h3>
-<p>Every spell you know that ForeCast uses, with a checkbox. Untick one and ForeCast ignores it: it is never suggested and leaves the HUD buttons and the halo. Changes to the buttons wait for the end of combat. <b>Use every spell again</b> ticks them all.</p>
+<p>Every spell you know that ForeCast uses, alphabetically, each with a checkbox (Auto Shot and auto attack aren't listed). Untick a spell and ForeCast ignores it completely: it is never suggested, and it leaves the HUD buttons and the halo. Tick it again and it comes back. Suggestions change at once; the click buttons change when combat ends, because the game locks them in combat. <b>Use every spell again</b> ticks them all. Spells you learn later show up the next time you open the tab.</p>
+
 <h3>Damage</h3>
 <div class="tbl"><table>
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
-<tr><td>Session-average DPS bar</td><td>The DPS bar on the HUD</td><td>On</td></tr>
-<tr><td>Damage recap after each fight</td><td>The tile that pops up</td><td>On</td></tr>
-<tr><td>Live damage during every fight</td><td>Opens DMG automatically in combat</td><td>On</td></tr>
-<tr><td>Reset DPS benchmark · Reset HOW stats</td><td>Clears the gold line and the HOW history</td><td></td></tr>
+<tr><td>Session-average DPS bar</td><td>The DPS bar on the HUD: your average for this session against your benchmark (the gold line).</td><td>On</td></tr>
+<tr><td>Damage recap after each fight</td><td>A tile that pops up for a few seconds after a fight with your damage by spell. See <a href="#recap">Fight recap</a>.</td><td>On</td></tr>
+<tr><td>Live damage during every fight</td><td>Opens the DMG window by itself in combat. The DMG button on the HUD switches it too.</td><td>On</td></tr>
+<tr><td>Reset DPS benchmark</td><td>Clears your average, best and the gold line.</td><td></td></tr>
+<tr><td>Reset HOW stats</td><td>Clears the HOW history. See <a href="#how">HOW</a>.</td><td></td></tr>
 </table></div>
+
 <h3>Sounds</h3>
-<p>See <a href="#sounds">Sounds</a>.</p>
+<p>One checkbox per sound (ticking one plays it), plus the sound channel: Master, Sound effects or Dialog. The list is under <a href="#sounds">Sounds</a>.</p>
+
 <h3>Halo</h3>
+<p>The halo shows while this tab is open, so you can see each change.</p>
 <div class="tbl"><table>
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
-<tr><td>Halo around my character</td><td>Turns the halo on</td><td>Off</td></tr>
-<tr><td>Lock halo position</td><td>Untick to drag it</td><td>On</td></tr>
-<tr><td>Halo only</td><td>Hides the ForeCast window</td><td>Off</td></tr>
-<tr><td>Click the spells on the halo</td><td>Ring icons cast in combat</td><td>On</td></tr>
-<tr><td>Halo spells</td><td>Ring, ranged left / melee right, or one icon below</td><td>Split (hunter), ring (others)</td></tr>
-<tr><td>Halo size · width · height · icon size</td><td>50–200% · 50–250% · 50–250% · 50–200%</td><td>100%</td></tr>
-<tr><td>Halo curve</td><td>100% round arcs, 0% straight up and down</td><td>100%</td></tr>
-<tr><td>Other spells</td><td>Spells not suggested: 0% hidden until suggested, 100% always fully visible</td><td>22%</td></tr>
-<tr><td>Halo opacity</td><td>10–100%</td><td>100%</td></tr>
-<tr><td>Halo when idle</td><td>Opacity with no enemy targeted (0 = hidden)</td><td>Hidden</td></tr>
-<tr><td>Range icon above the halo</td><td>Reticle in range, swords in melee, X too far</td><td>On</td></tr>
-<tr><td>Power ring · pet health ring · stats</td><td>Readouts on the halo</td><td>On</td></tr>
-<tr><td>Reset halo position</td><td>Back around your character</td><td></td></tr>
+<tr><td>Halo around my character</td><td>Turns the halo on. It shows when you target a living enemy.</td><td>Off</td></tr>
+<tr><td>Lock halo position</td><td>Untick to drag the halo; it stays on screen while unlocked.</td><td>On</td></tr>
+<tr><td>Halo only</td><td>Hides the ForeCast window and turns the halo on. Settings stay on the minimap button and <code>/fc</code>.</td><td>Off</td></tr>
+<tr><td>Click the spells on the halo</td><td>The ring icons cast their spell when clicked in combat. Grayed out in the one-icon layout.</td><td>On</td></tr>
+<tr><td>Halo spells (layout)</td><td><b>All around the ring</b>, <b>Ranged left, melee right</b> (shared spells along the bottom), or <b>One icon below</b>.</td><td>Split (hunter), ring (others)</td></tr>
+<tr><td>Reset halo position</td><td>Back around your character.</td><td></td></tr>
+<tr><td>Halo size</td><td>50–200%, everything together.</td><td>100%</td></tr>
+<tr><td>Halo width</td><td>50–250%: how far apart the left and right sides are.</td><td>100%</td></tr>
+<tr><td>Halo height</td><td>50–250%: how tall the sides are.</td><td>100%</td></tr>
+<tr><td>Halo curve</td><td>100% gives round arcs; lower straightens them, down to two upright columns at 0%.</td><td>100%</td></tr>
+<tr><td>Halo icon size</td><td>50–200% for the spell icons on the halo.</td><td>100%</td></tr>
+<tr><td>Other spells</td><td>How visible the spells that aren't suggested are: 0% hidden until suggested, 100% always fully visible in full color.</td><td>22%</td></tr>
+<tr><td>Halo opacity</td><td>10–100% for the whole halo.</td><td>100%</td></tr>
+<tr><td>Halo when idle</td><td>Opacity with no enemy targeted. 0 hides it; more keeps it on screen, faded.</td><td>Hidden</td></tr>
+<tr><td>Power ring</td><td>Mana, rage or energy as a glowing line around the left arc.</td><td>On</td></tr>
+<tr><td>Pet health ring</td><td>Your pet's health around the right arc (your own with no pet).</td><td>On</td></tr>
+<tr><td>Range icon</td><td>At the top center: reticle in range, crossed swords in melee, X too far away or in a hunter's dead zone.</td><td>On</td></tr>
+<tr><td>Stats</td><td><code>ON YOU</code>, DPS and threat above the halo. The fight's DPS stays a few seconds after combat, then fades.</td><td>On</td></tr>
 </table></div>
+<p>No size, width, height, curve or icon setting makes icons or text overlap: the halo grows a little when the icons need room.</p>
+
+<h3 id="defaults">Back to defaults</h3>
+<p>Type <code>/fc defaults</code> to see what it does, then <code>/fc defaults yes</code>. Every ForeCast setting on that character goes back to its default and the UI reloads. Positions, ignored spells and sounds are reset too. Your learning, DPS history and HOW stats are kept.</p>
+<p>To wipe everything, including the history: log out, then delete <code>ForeCast.lua</code> (and <code>ForeCast.lua.bak</code>) from <code>World of Warcraft\_forever_\WTF\Account\&lt;account&gt;\&lt;server&gt;\&lt;character&gt;\SavedVariables\</code>.</p>
 </section>
 
 <section id="sounds" data-s>
@@ -525,7 +568,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td><code>/fc danger</code></td><td>Your target's danger rating and why</td></tr>
 <tr><td><code>/fc lowhp &lt;5-90&gt;</code></td><td>LOW HEALTH warning threshold</td></tr>
 <tr><td><code>/fc group</code></td><td>Party members linked through coordination</td></tr>
-<tr><td><code>/fc sound &lt;name&gt;</code></td><td>Test a sound: interrupt, aggro, proc, petdown, tick</td></tr>
+<tr><td><code>/fc sound &lt;name&gt;</code></td><td>Test a sound: interrupt, aggro, proc, petdown, flee, tick</td></tr>
 <tr><td><code>/fc scale &lt;50-200&gt;</code></td><td>HUD size (also <code>/fc size</code>)</td></tr>
 <tr><td><code>/fc halo</code></td><td>Halo on or off</td></tr>
 <tr><td><code>/fc halo &lt;50-200&gt;</code> · <code>/fc halo reset</code></td><td>Halo size · move it back around your character</td></tr>
@@ -533,6 +576,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td><code>/fc show</code> · <code>/fc hide</code></td><td>Show or hide the HUD</td></tr>
 <tr><td><code>/fc log on|off|clear</code></td><td>Beta log of cues and casts, saved to SavedVariables</td></tr>
 <tr><td><code>/fc version</code></td><td>The installed version</td></tr>
+<tr><td><code>/fc defaults</code> · <code>/fc defaults yes</code></td><td>Explain · put every setting back to its default and reload (history is kept)</td></tr>
 <tr><td><code>/fc talentdebug</code> · <code>/fc talentnodes</code></td><td>Talent detection details</td></tr>
 <tr><td><code>/fc pet</code> · <code>/fc hawk &lt;s&gt;</code></td><td>Hunter only: pet report · Summon Hawk lifetime</td></tr>
 <tr><td><code>/fc self</code></td><td>Priest only: health, heal and wand report</td></tr>
