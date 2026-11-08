@@ -77,12 +77,13 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
   h1{font-size:26px} header.hero img{width:64px;height:64px}
   td:first-child{white-space:normal}
 }
+.ri{height:20px;width:20px;vertical-align:-4px;background:#1a1d2e;border-radius:4px;padding:1px}
 </style>
 </head>
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.7.0</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.7.1</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -199,10 +200,15 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <ul>
   <li><b>Power ring</b> around the left arc (mana, rage or energy): a glowing line that fills from the bottom.</li>
   <li><b>Pet health ring</b> around the right arc (your own health if you have no pet). Both stay live in combat even though Forever hides the numbers.</li>
-  <li><b>Stats</b> above the halo: <code>ON YOU</code>, DPS, threat and time to kill.</li>
+  <li><b>Stats</b> above the halo: <code>ON YOU</code>, DPS and threat. When the fight ends, its DPS stays there for a few seconds, then fades out.</li>
+  <li><b>Range icon</b> at the top center, under the stats:
+    <img class="ri" src="img/range-reticle.png" alt="reticle"> in range,
+    <img class="ri" src="img/range-melee.png" alt="crossed swords"> in melee,
+    <img class="ri" src="img/range-cross.png" alt="reticle with an X"> too far away (or in a hunter's dead zone). Casters can cast in melee too, so theirs stays a reticle up close.</li>
+  <li><b>FLEEING!</b> in red above the stats when your target runs away at low health.</li>
 </ul>
 <h3>Placing it</h3>
-<p>Sliders for halo size, width (how far apart the two sides are), height, icon size, opacity and idle opacity. Width and height change only their own direction; the halo only grows past them when the icons need the room. Icons and text never overlap at any setting. Untick <b>Lock halo position</b> and drag it. <b>Reset halo position</b> puts it back around your character. <b>Halo only</b> hides the ForeCast window entirely; settings stay on the minimap button and <code>/fc</code>.</p>
+<p>Sliders for halo size, width (how far apart the two sides are), height, curve (from 100% round arcs down to 0%, two straight upright columns), icon size, opacity and idle opacity. Width and height change only their own direction; the halo only grows past them when the icons need the room. Icons and text never overlap at any setting. Untick <b>Lock halo position</b> and drag it. <b>Reset halo position</b> puts it back around your character. <b>Halo only</b> hides the ForeCast window entirely; settings stay on the minimap button and <code>/fc</code>.</p>
 </section>
 
 <section id="recap" data-s>
@@ -228,6 +234,8 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <h2>Warnings and glows</h2>
 <h3>Danger rating</h3>
 <p>Before you pull, your target is rated <b>SAFE</b>, <b>CAREFUL</b>, <b>DANGER</b> or <b>DEADLY</b>. The rating weighs its level against yours, elite or rare status, enemy players, and other idle mobs close by, and drops one step when you're grouped. <code>/fc danger</code> explains the rating.</p>
+<h3>FLEEING!</h3>
+<p>When your target runs away at low health, <b>FLEEING!</b> shows in red on the HUD and the halo for a few seconds, with the Fleeing sound. Other mobs running don't count.</p>
 <h3>LOW HEALTH warning</h3>
 <p>Below your threshold (35% by default, <code>/fc lowhp &lt;5-90&gt;</code>), the HUD warns you and shows your escapes that are ready, plus your best healing potion.</p>
 <h3>Glow on your own action bars</h3>
@@ -451,6 +459,8 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Role (tanking classes)</td><td>Auto, Damage or Tank</td><td>Auto</td></tr>
 <tr><td>Manual scan · Reset learning</td><td>Rescan spells and talents; clear what was learned</td><td></td></tr>
 </table></div>
+<h3>Spells</h3>
+<p>Every spell you know that ForeCast uses, with a checkbox. Untick one and ForeCast ignores it: it is never suggested and leaves the HUD buttons and the halo. Changes to the buttons wait for the end of combat. <b>Use every spell again</b> ticks them all.</p>
 <h3>Damage</h3>
 <div class="tbl"><table>
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
@@ -470,9 +480,11 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Click the spells on the halo</td><td>Ring icons cast in combat</td><td>On</td></tr>
 <tr><td>Halo spells</td><td>Ring, ranged left / melee right, or one icon below</td><td>Split (hunter), ring (others)</td></tr>
 <tr><td>Halo size · width · height · icon size</td><td>50–200% · 50–250% · 50–250% · 50–200%</td><td>100%</td></tr>
+<tr><td>Halo curve</td><td>100% round arcs, 0% straight up and down</td><td>100%</td></tr>
 <tr><td>Other spells</td><td>Spells not suggested: 0% hidden until suggested, 100% always fully visible</td><td>22%</td></tr>
 <tr><td>Halo opacity</td><td>10–100%</td><td>100%</td></tr>
 <tr><td>Halo when idle</td><td>Opacity with no enemy targeted (0 = hidden)</td><td>Hidden</td></tr>
+<tr><td>Range icon above the halo</td><td>Reticle in range, swords in melee, X too far</td><td>On</td></tr>
 <tr><td>Power ring · pet health ring · stats</td><td>Readouts on the halo</td><td>On</td></tr>
 <tr><td>Reset halo position</td><td>Back around your character</td><td></td></tr>
 </table></div>
@@ -487,9 +499,10 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Aggro</td><td>A mob turns on you after the first seconds of a pull, or gets loose when you tank</td><td>Off</td></tr>
 <tr><td>Proc</td><td>Nightfall, Hot Streak, Missile Barrage, 5 Maelstrom Weapon stacks</td><td>On</td></tr>
 <tr><td>Pet down</td><td>Your pet or demon dies in a fight</td><td>On</td></tr>
+<tr><td>Fleeing</td><td>Your target runs away at low health</td><td>On</td></tr>
 <tr><td>Practice tick</td><td>A soft tick on every new red cue</td><td>Off</td></tr>
 </table>
-<p>Test one with <code>/fc sound interrupt</code> (or aggro, proc, petdown, tick).</p>
+<p>Test one with <code>/fc sound interrupt</code> (or aggro, proc, petdown, flee, tick).</p>
 </section>
 
 <section id="commands" data-s>
