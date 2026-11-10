@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.7.5</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.7.6</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -102,7 +102,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
     <a href="#engine">Detection and scanning</a>
     <a href="#forever">Built for WoW: Forever</a>
     <a href="#mana">Mana plans</a>
-    <a href="#groups">Groups, threat and roles</a>
+    <a href="#groups">Groups, threat and roles</a><a href="#pvp">PvP</a>
     <a href="#learning">Learning from your fights</a>
     <a href="#racials">Racials</a>
     <a href="#languages">Any game language</a>
@@ -293,6 +293,18 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <p><b>Coordinate with party members</b> who use ForeCast, QuiverShift or Smite Club. The tank gets a head start, and damage holds when the tank loses the mob. <code>/fc group</code> shows who is linked.</p>
 </section>
 
+<section id="pvp" data-s>
+<h2>PvP</h2>
+<p>When your target is an enemy player, ForeCast switches on its own and shows <b>PVP</b> in orange on the HUD. Target a mob again and it switches back.</p>
+<ul>
+  <li><b>Burst:</b> big cooldowns (Recklessness, Arcane Power, Rapid Fire...) come up red instead of gold, including the ones normally kept for long fights.</li>
+  <li><b>Slows:</b> Hamstring (warrior), Wing Clip (hunter), Frost Shock (shaman) and Cone of Cold (mage, up close) join the rotation, only against players.</li>
+  <li><b>Defenses first:</b> ForeCast assumes the player is on you, so Frost Nova, Psychic Scream, Concussive Shot, Death Coil and the like come up, and heals come up 15 points sooner.</li>
+  <li><b>No mob logic:</b> no fight-length guess and no threat holding, even in a party.</li>
+</ul>
+<p>Interrupts were already first and work on players the same way. Turn it off with <b>PvP</b> on the Rotation tab. The <a href="#viewer">rotation viewer</a> shows it with Target: Player.</p>
+</section>
+
 <section id="learning" data-s>
 <h2>Learning from your fights</h2>
 <p>On by default, kept per character. Averages lean toward recent fights, so they follow your gear and level.</p>
@@ -459,6 +471,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
 <tr><td>Big cooldowns are my call</td><td>Cooldowns of a minute or more turn gold when ready, and the rotation never waits for them. Off: they come up red like any other spell.</td><td>On</td></tr>
 <tr><td>Manage threat in groups</td><td>In a party, waits for the tank to pull and holds your damage at 85% threat (plus your class's threat dump). See <a href="#groups">Groups</a>.</td><td>On</td></tr>
+<tr><td>PvP</td><td>Against an enemy player: burst cooldowns, slows and earlier defenses. See <a href="#pvp">PvP</a>.</td><td>On</td></tr>
 <tr><td>Coordinate with party members</td><td>Links with party members using ForeCast, QuiverShift or Smite Club to share the pull and threat.</td><td>On</td></tr>
 <tr><td>Danger rating</td><td>Rates your target before you pull, from its level, type and what you've learned about it.</td><td>On</td></tr>
 <tr><td>LOW HEALTH warning</td><td>Below the threshold (<code>/fc lowhp</code>, 35% by default) it shows your escapes that are ready and your best potion.</td><td>On</td></tr>
@@ -498,7 +511,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <ul>
   <li><b>Fight</b>: Short (under 8 seconds), Medium (8–20) or Long (20 or more). In a real fight ForeCast estimates the length from how fast the target loses health and what it has learned from your fights.</li>
   <li><b>Group</b>: Solo or Party.</li>
-  <li><b>Target</b>: Normal or Elite.</li>
+  <li><b>Target</b>: Normal, Elite or Player (the <a href="#pvp">PvP</a> rotation).</li>
   <li><b>Range</b> (hunters): Ranged or Melee.</li>
 </ul>
 <p>The list below shows, for the spells you know:</p>
