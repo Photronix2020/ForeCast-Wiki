@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.7.7</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.7.8</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -150,6 +150,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
   <div class="card cue" style="--c:var(--green)"><b>Green: get ready.</b><br>The ability that turns red next, with a countdown. It shows at the same time as a red or yellow cue, as soon as ForeCast knows it's next, so you have time to get ready. Reactive abilities (Overpower, Revenge, Riposte) show green "press if it lights up".</div>
   <div class="card cue" style="--c:var(--gold)"><b>Yellow / gold: wait.</b><br>Let Auto Shot land, let your wand shoot, or hold your damage for threat. Gold borders also mark big cooldowns that are ready.</div>
 </div>
+<p><b>Your call.</b> If you cast something else while a set-up step is red (sending the pet, Hunter's Mark, an opener), ForeCast skips that step for this target and carries on from the spell you chose. Damage spells need nothing special: the rotation always picks up from wherever you are.</p>
 </section>
 
 <section id="hud" data-s>
@@ -210,7 +211,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
     <img class="ri" src="img/range-melee.png" alt="crossed swords"> in melee,
     <img class="ri" src="img/range-cross.png" alt="reticle with an X"> too far away (or in a hunter's dead zone). Casters can cast in melee too, so theirs stays a reticle up close.</li>
   <li><b>FLEEING!</b> in red above the stats when your target runs away at low health.</li>
-  <li><b>DPS gauge</b> (optional): a curve over the top of the halo in combat. The mark in the middle is your average fight; it fills from the left, so past the mark means above average. When the game shows the number it's colored like the DPS bar (red well below, yellow about average, green above, purple far above) with the difference in percent; when Forever hides it, the gauge still fills, in blue.</li>
+  <li><b>DPS gauge</b> (optional): a curve over the top of the halo in combat, like the DPS bar on the window. The mark in the middle is your average fight; it fills from the left, so past the mark means above average. It's colored like the DPS bar (red well below, yellow about average, green above, purple far above) with the difference in percent. When Forever hides the meter in combat it uses ForeCast's own estimate (marked <code>~</code>) from what each of your casts did in past fights. After the fight it shows your final DPS and fades out together with the DPS text.</li>
 </ul>
 <h3>Placing it</h3>
 <p>Sliders for halo size, width (how far apart the two sides are), height, curve (from 100% round arcs down to 0%, two straight upright columns), icon size, opacity and idle opacity. Width and height change only their own direction; the halo only grows past them when the icons need the room. Icons and text never overlap at any setting. Untick <b>Lock halo position</b> and drag it. <b>Reset halo position</b> puts it back around your character. <b>Halo only</b> hides the ForeCast window entirely; settings stay on the minimap button and <code>/fc</code>.</p>
