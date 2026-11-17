@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.8.3</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.8.4</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -148,7 +148,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <div class="grid">
   <div class="card cue" style="--c:var(--red)"><b>Red: cast now.</b><br>The icon grows with a bold red border. It turns red inside your spell queue window, so your press fires the instant the ability is ready.</div>
   <div class="card cue" style="--c:var(--green)"><b>Green: get ready.</b><br>The ability that turns red next, with a countdown. It shows at the same time as a red or yellow cue, as soon as ForeCast knows it's next, so you have time to get ready. Reactive abilities (Overpower, Revenge, Riposte) show green "press if it lights up".</div>
-  <div class="card cue" style="--c:var(--gold)"><b>Yellow / gold: wait.</b><br>Let Auto Shot land, let your wand shoot, or hold your damage for threat. Gold borders also mark big cooldowns that are ready.</div>
+  <div class="card cue" style="--c:var(--gold)"><b>Yellow / gold: wait.</b><br>Let Auto Shot land, let your wand shoot, or hold your damage for threat. A next-swing attack you pressed (Raptor Strike, Heroic Strike, Maul) turns yellow at once: it is queued and lands with your next swing. Gold borders also mark big cooldowns that are ready.</div>
 </div>
 <p><b>Prefer traffic lights?</b> Switch <b>Settings › Look › Colors</b> to <b>green = cast now</b>: green means cast now, yellow is the spell coming up next, and red means wait. The HUD, halo, action bar glow, cast text and help text all follow it. Gold for ready big cooldowns stays gold. This wiki uses the default colors.</p>
 <p><b>Your call.</b> If you cast something else while a set-up step is red (sending the pet, Hunter's Mark, an opener), ForeCast skips that step for this target and carries on from the spell you chose. Damage spells need nothing special: the rotation always picks up from wherever you are.</p>
