@@ -205,8 +205,8 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <h3>Readouts</h3>
 <p>With these the halo can stand in for the window:</p>
 <ul>
-  <li><b>Power ring</b> around the left arc (mana, rage or energy): a glowing line that fills from the bottom.</li>
-  <li><b>Pet health ring</b> around the right arc (your own health if you have no pet). Both stay live in combat even though Forever hides the numbers.</li>
+  <li><b>Power ring</b> around the left arc (mana, rage or energy): a glowing line that fills from the bottom. Druids get three, energy, rage and mana, stacked outward and marked E, R and M, so all three show in every form.</li>
+  <li><b>Health ring</b> around the right arc: your pet's health for hunters and warlocks (yours with no pet), your own for everyone else. Both stay live in combat even though Forever hides the numbers.</li>
   <li><b>Stats</b> above the halo: <code>ON YOU</code>, DPS and threat. When the fight ends, its DPS stays there for a few seconds, then fades out.</li>
   <li><b>Range icon</b> at the top center, under the stats:
     <img class="ri" src="img/range-reticle.png" alt="reticle"> in range,
@@ -576,12 +576,13 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Halo width</td><td>50–250%: how far apart the left and right sides are.</td><td>100%</td></tr>
 <tr><td>Halo height</td><td>50–250%: how tall the sides are.</td><td>100%</td></tr>
 <tr><td>Halo curve</td><td>100% gives round arcs; lower straightens them, down to two upright columns at 0%.</td><td>100%</td></tr>
+<tr><td>Halo line thickness</td><td>50–300% for the arcs, rings and DPS gauge.</td><td>100%</td></tr>
 <tr><td>Halo icon size</td><td>50–200% for the spell icons on the halo.</td><td>100%</td></tr>
 <tr><td>Other spells</td><td>How visible the spells that aren't suggested are: 0% hidden until suggested, 100% always fully visible in full color.</td><td>22%</td></tr>
 <tr><td>Halo opacity</td><td>10–100% for the whole halo.</td><td>100%</td></tr>
 <tr><td>Halo when idle</td><td>Opacity with no enemy targeted. 0 hides it; more keeps it on screen, faded.</td><td>Hidden</td></tr>
-<tr><td>Power ring</td><td>Mana, rage or energy as a glowing line around the left arc.</td><td>On</td></tr>
-<tr><td>Pet health ring</td><td>Your pet's health around the right arc (your own with no pet).</td><td>On</td></tr>
+<tr><td>Power ring</td><td>Mana, rage or energy as a glowing line around the left arc (druids: all three).</td><td>On</td></tr>
+<tr><td>Health ring</td><td>Your health around the right arc; your pet's for hunters and warlocks.</td><td>On</td></tr>
 <tr><td>Range icon</td><td>At the top center: reticle in range, crossed swords in melee, X too far away or in a hunter's dead zone.</td><td>On</td></tr>
 <tr><td>Stats</td><td><code>ON YOU</code>, DPS and threat above the halo. The fight's DPS stays a few seconds after combat, then fades.</td><td>On</td></tr>
 <tr><td>DPS gauge</td><td>A curve over the halo in combat: the middle is your average fight, left of it below, right of it above.</td><td>Off</td></tr>
