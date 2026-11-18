@@ -132,6 +132,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="overview" data-s>
 <h2>Overview</h2>
+<div class="note"><b>New in 1.0: major updates to every class.</b> Every spec's rotation is rebuilt from Icy Veins' WoW Forever rotation guides, and every class picks its spec with a style button in Settings › Rotation (see <a href="#styles">Play styles and healing</a>). Paladin, Priest, Shaman and Druid also get a healer style.</div>
 <p>ForeCast watches the fight and lights up the right ability at the right moment. It works out your class, race, level, trained spells and ranks, talents, form or stance, pet and group by itself, from level 1 to the cap.</p>
 <p>It never casts anything on its own. It shows you what to press, and the icons are clickable buttons if you want to click them.</p>
 <figure><img src="img/hud-how.png" alt="The ForeCast HUD with the HOW AM I DOING window beside it" loading="lazy"><figcaption>The HUD (hunter) with the HOW AM I DOING window open beside it.</figcaption></figure>
@@ -227,7 +228,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 </section>
 
 <section id="how" data-s>
-<h2>Play styles and healing</h2>
+<h2 id="styles">Play styles and healing</h2>
 <p><b>Rotations</b> (1.0): every spec follows Icy Veins' WoW Forever rotation guide. Pick your spec with the style button; until you do, ForeCast follows your talents.</p>
 <p>Most classes have a <b>style button</b> on the Rotation tab, like the mana plan: Paladin (Retribution, Protection tank, Holy healer), Priest (Shadow, Smite, Holy healer), Shaman (Enhancement, Elemental, Restoration healer), Warrior (Arms, Fury, Protection tank), Mage (Frost, Fire, Arcane), Warlock (Affliction, Demonology, Destruction), Rogue (Combat, Assassination, Subtlety), Hunter (Beast Mastery, Marksmanship, Survival) and Druid (Hybrid, Cat-focused, Bear, Balance, Restoration). Until you pick one it follows your talents; a tank style sets the Tank role.</p>
 <p><b>Healer styles</b> follow Icy Veins' healer guides. Target a friend and ForeCast keeps your heal over time on them (Renew, Riptide, Rejuvenation and Regrowth, or Oath of Light on your tank), red when it runs out and green, counting down, before. Procs come up red (Holy Light on Infusion of Light, Holy Nova on Searing Light, Wild Growth on Clearcasting), and mana cooldowns below a line. Otherwise your main heal shows green, because Forever hides your friends' health in combat. Heals clicked on the halo or the bar go on your friendly target, or on you without one. Target an enemy for your damage spells.</p>
@@ -353,6 +354,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <section id="hunter" data-s>
 <h2>Hunter</h2>
 <p>Beast Mastery leveling. Ranged and melee rows switch with your range. Hunter's Mark on longer fights, Serpent Sting on any fight of 8 seconds or more (and always before you learn Arcane Shot), Arcane Shot and Concussive Shot at range, Raptor Strike and Mongoose Bite in melee, and Auto Shot weaving. While Auto Shot is firing or about to land, the shot you're waiting for stays green ("stand still" or "after Auto Shot"), then turns red: the highlight never jumps to Auto Shot and back. Pet Attack is on the bar, with Mend Pet below your threshold. Bestial Wrath and Rapid Fire are big cooldowns. Intimidation or Feign Death are used when you pull aggro.</p>
+<p><b>Rotation (1.0, Icy Veins):</b> Aimed Shot on cooldown for every spec, Sniper Shot first for Marksmanship, Beast Mastery keeps two hawks up with Arcane Shot, Serpent Sting kept up.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Mend Pet below X% pet health (slider)</td><td>25%</td></tr>
@@ -368,6 +370,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <section id="priest" data-s>
 <h2>Priest</h2>
 <p>Shadow leveling. Shadow Word: Pain, Mind Blast and Mind Flay, then your wand as mana runs low, with Shadowform. Power Word: Shield before pulls, and self-heals below your threshold.</p>
+<p><b>Rotation (1.0, Icy Veins):</b> Shadow keeps Shadow Word: Pain and Devouring Plague up, then Mind Blast, Shadow Word: Death, Vampiric Embrace and Mind Flay. The Smite style opens with Holy Fire and Mind Blast and never asks for Shadowform. The Holy style heals: Renew kept on your friendly target, Holy Nova on Searing Light.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Self-heal below X% (slider)</td><td>40%</td></tr>
@@ -380,6 +383,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <section id="warrior" data-s>
 <h2>Warrior</h2>
 <p>Charge opener, Victory Rush after kills, Execute, Mortal Strike, Bloodthirst or Shield Slam, Rend and Battle Shout. Tanks in Defensive Stance get Taunt, Thunder Clap, Sunder Armor, Shield Block and Revenge. Arms gets Spearing Strike, Fury gets Reckless Swings, and with two or more enemies in melee Cleave replaces Heroic Strike and Sweeping Strikes comes up (Thunder Clap at three).</p>
+<p><b>Rotation (1.0, Icy Veins):</b> Arms uses Overpower, Mortal Strike, Execute, Slam and Spearing Strike (first against Giants and Dragonkin). Fury uses Whirlwind whenever ready, Bloodthirst, and Berserker Rage and Reckless Swings for rage. Protection keeps Shield Block on cooldown, then Shield Slam, Revenge, Thunder Clap, Rend and Sunder Armor.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Suggest Heroic Strike with spare rage</td><td>On</td></tr>
@@ -391,6 +395,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <section id="rogue" data-s>
 <h2>Rogue</h2>
 <p>Cheap Shot or Ambush from Stealth, combo point builders, Eviscerate at 3+ points (5 on long fights), and Slice and Dice and Rupture when they pay off. Kick, Gouge and Kidney Shot interrupt. Evasion and Vanish when things go wrong, plus a poison check. Shank on cooldown for energy, Death Mark at 4+ points (Subtlety; Eviscerate waits for it), and Blade Flurry on two or more enemies.</p>
+<p><b>Rotation (1.0, Icy Veins):</b> Slice and Dice at all times, Rupture when the mob lives through it, Shank on cooldown, Eviscerate at 5 points once both are up and Shank is cooling down. Subtlety adds Death Mark at 5 points, Garrote after Ghostly Strike, Premeditation and Hemorrhage.</p>
 <p><b>Combo points are a guess in combat.</b> Forever hides them, so ForeCast counts them from your casts. A builder that misses or gets dodged still counts, so finishers wait for at least 3 points (2 when the target is nearly dead). If you press a finisher and the game says you have no combo points, ForeCast resets its count to 0 and goes back to builders.</p>
 <p><b>Daggers (Subtlety, Assassination):</b> with a dagger in your main hand, ForeCast opens with Ambush, and in a group, while someone else is tanking, it puts Backstab ahead of Hemorrhage and Sinister Strike.</p>
 <table>
@@ -404,6 +409,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <section id="mage" data-s>
 <h2>Mage</h2>
 <p>Armor and Arcane Intellect before the pull, then Frostbolt (or Fireball or Arcane Missiles). Ice Lance on frozen targets and with Fingers of Frost, Frost Nova when a mob reaches you, Counterspell, Ice Barrier and Ice Block, and your wand when your mana plan says to save. Arcane Wrath on cooldown, Frostfire Bolt as Fire's filler once trained, and Arcane Explosion with three or more enemies around you.</p>
+<p><b>Rotation (1.0, Icy Veins):</b> Pyroblast at 3 Heating Up with Fire Blast on cooldown until then; Fire keeps Improved Scorch at 5 stacks and fills with Frostfire Bolt; Arcane fills with Arcane Blast; Frost keeps Ice Barrier up and casts Frostbolt; Cone of Cold on two or more.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Wand a slowed target between Frostbolts (saves mana)</td><td>Off</td></tr>
@@ -414,6 +420,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <section id="warlock" data-s>
 <h2>Warlock</h2>
 <p>Summon and send your demon, then Bane of Agony, Corruption and Immolate, then your wand (or Shadow Bolt). Nightfall procs, Drain Life below your threshold, Drain Soul when you need shards, Life Tap before pulls, and a demon panel.</p>
+<p><b>Rotation (1.0, Icy Veins):</b> Affliction leads with Corruption, then Bane of Agony and Siphon Life, and fires Shadow Bolt only on Nightfall. Demonology adds Bane of Doom on long fights, Searing Pain to keep Demonic Brand up and Shadow Bolt as filler. Destruction keeps Shadow and Flame up with Shadowburn, Conflagrates and fills with Incinerate. Life Tap below a quarter mana.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Drain Life below X% (slider)</td><td>35%</td></tr>
@@ -425,6 +432,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <section id="druid" data-s>
 <h2>Druid</h2>
 <p>Follows your form. Caster: Moonfire and Wrath. Solo, while the mob walks up to you, it opens with up to three hard-cast Wraths, then Moonfire once the mob is in melee range. Cat and Bear follow Icy Veins' Feral rotation, with its three styles on the <b>Druid style</b> button (Settings › Rotation): <b>Hybrid</b> (Claw builds, Shred only on Clearcasting), <b>Cat-focused</b> (Shred builds) and <b>Bear</b> (tanking), plus <b>Restoration</b> (healer): target a friend and ForeCast keeps Regrowth and Rejuvenation on them (green, counting down, before they run out), shows Wild Growth on Clearcasting in a group and Innervate below half mana, while an enemy target gets Insect Swarm and Wrath; heals clicked on the halo or the bar go on your friendly target, or on you without one. Until you pick a style it follows your talents. If the game says you must be behind your target, Shred and Ravage are left out on that target for 8 seconds and Claw takes over. Cat: Prowl and a Ravage opener, Faerie Fire and Rake kept up, Rip at 5 combo points, Ferocious Bite at 5 points and 70 energy while Rip still has 4 seconds (3 for Cat-focused), green while you pool energy, and Shifting Power at 50 energy or less. Forever hides energy, so ForeCast estimates it from your attacks and corrects it whenever the game says an attack can't be afforded. Shifting Power when Cat Form is short of energy. Bear: Primal Bite on cooldown, Lacerate (Swipe on two or more), Maul at 35 rage, Faerie Fire and Demoralizing Roar kept up, and it tanks automatically. Rejuvenation, Regrowth and Healing Touch below your threshold. On the halo, druids get one column per form: Cat spells on the left, Bear on the right and caster spells (Moonfire, Wrath, heals) along the bottom, only the spells each form uses. Balance and Restoration get casting on the left, heals on the right and forms below. In Cat Form the auto attack shows a cat paw, in Bear Form a bear claw, instead of your weapon.</p>
+<p><b>Rotation (1.0, Icy Veins):</b> Balance keeps Insect Swarm and Moonfire up, then casts Wrath and two Starfires (Eclipse), and Hurricane on five or more.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Heal yourself below X% (slider)</td><td>50%</td></tr>
@@ -438,6 +446,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <section id="paladin" data-s>
 <h2>Paladin</h2>
 <p>Keeps the right Seal up: Command with a slow weapon (3.8 s or more), Righteousness otherwise. Holy Strike and Judgement on cooldown, Exorcism on undead and demons, Hammer of Wrath, and Flash of Light or Holy Light below your threshold. Tanks with Righteous Fury. Swift Judgement while Judgement cools down, Templar's Bulwark when you're in trouble, and Consecration on three or more.</p>
+<p><b>Rotation (1.0, Icy Veins):</b> Retribution and Protection keep Consecration, Judgement, Holy Shield and Holy Strike on cooldown, with Exorcism and Holy Wrath against Undead and Demons and Holy Shock on cooldown. The Holy style heals: Oath of Light on your tank, Holy Light on Infusion of Light, Flash of Light.</p>
 <p><b>Unsealed Wrath</b> (Retribution's 31-point talent): every melee hit stores your seal, up to 3. Once three swings are stored, ForeCast shows <b>TWIST:</b> with the other seal (Command or Righteousness) so switching fires all three stored procs. Then it counts again and twists back.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
@@ -449,6 +458,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <section id="shaman" data-s>
 <h2>Shaman</h2>
 <p>Lightning Shield and a weapon imbue before the pull, Searing Totem, a Flame Shock pull, Stormstrike into Earth Shock, Lightning Bolt on 5 Maelstrom Weapon stacks, Chain Lightning on two or more enemies, Fire Nova on three around you, and healing waves below your threshold.</p>
+<p><b>Rotation (1.0, Icy Veins):</b> Enhancement drops Magma Totem, keeps Flame Shock up, then Stormstrike, Lightning Bolt at 5 Maelstrom Weapon, Earth Shock and Fire Nova. Elemental keeps Flame Shock up, uses Lightning Mastery and adds Chain Lightning (on long fights only with Clearcasting). The Restoration style heals: Riptide on your target, Mana Tide Totem below 80%.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Heal yourself below X% (slider)</td><td>40%</td></tr>
