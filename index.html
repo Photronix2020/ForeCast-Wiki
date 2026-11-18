@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.9.5</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.9.6</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -227,6 +227,11 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 </section>
 
 <section id="how" data-s>
+<h2>Damage Power and Rotation %</h2>
+<p><b>Damage Power</b> compares this fight's DPS with your own normal DPS for the same kind of mob (normal, elite...) at the same level gap, learned from your fights (after 3 of them). Low-level mobs die fast and make plain DPS look high; Damage Power doesn't: 100% is your usual, above is better. <b>Rotation %</b> is how much of the fight you spent doing your best damage: it drops when a damage spell sat ready for over half a second with nothing going on, and when you cast a weaker damage spell than the red one (by what each spell does for you on average). How fast you press doesn't count against you. Both show under the DPS bar and on the halo's stats line (<em>Damage Power and Rotation %</em> on the Damage tab, on by default); <code>/fc power</code> prints them.</p>
+</section>
+
+<section data-s>
 <h2>How am I doing (HOW)</h2>
 <p>The <b>HOW</b> button compares your DPS in fights where you followed the cues well against fights where you didn't, and fast reactions against slow ones, over your last 100 fights. It shows:</p>
 <ul>
