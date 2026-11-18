@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.8.5</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v0.9.0</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -147,8 +147,8 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <h2>The three colors</h2>
 <div class="grid">
   <div class="card cue" style="--c:var(--red)"><b>Red: cast now.</b><br>The icon grows with a bold red border. It turns red inside your spell queue window, so your press fires the instant the ability is ready.</div>
-  <div class="card cue" style="--c:var(--green)"><b>Green: get ready.</b><br>The ability that turns red next, with a countdown. It shows at the same time as a red or yellow cue, as soon as ForeCast knows it's next, so you have time to get ready. Reactive abilities (Overpower, Revenge, Riposte) show green "press if it lights up".</div>
-  <div class="card cue" style="--c:var(--gold)"><b>Yellow / gold: wait.</b><br>Let Auto Shot land, let your wand shoot, or hold your damage for threat. A next-swing attack you pressed (Raptor Strike, Heroic Strike, Maul) turns yellow at once: it is queued and lands with your next swing. Gold borders also mark big cooldowns that are ready.</div>
+  <div class="card cue" style="--c:var(--green)"><b>Green: get ready.</b><br>The ability that turns red next, with a countdown. It shows at the same time as a red or yellow cue, as soon as ForeCast knows it's next, so you have time to get ready. Once a spell is green it stays green until it turns red: it only gives way to another spell that comes up clearly (half a second) sooner, and a spell short of rage or energy waits in green instead of jumping straight to red. Reactive abilities (Overpower, Revenge, Riposte) show green "press if it lights up".</div>
+  <div class="card cue" style="--c:var(--gold)"><b>Yellow / gold: wait.</b><br>Let your wand shoot, or hold your damage for threat. A next-swing attack you pressed (Raptor Strike, Heroic Strike, Maul) turns yellow at once: it is queued and lands with your next swing. Gold borders also mark big cooldowns that are ready.</div>
 </div>
 <p><b>Prefer traffic lights?</b> Switch <b>Settings › Look › Colors</b> to <b>green = cast now</b>: green means cast now, yellow is the spell coming up next, and red means wait. The HUD, halo, action bar glow, cast text and help text all follow it. Gold for ready big cooldowns stays gold. This wiki uses the default colors.</p>
 <p><b>Your call.</b> If you cast something else while a set-up step is red (sending the pet, Hunter's Mark, an opener), ForeCast skips that step for this target and carries on from the spell you chose. Damage spells need nothing special: the rotation always picks up from wherever you are.</p>
@@ -272,8 +272,12 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
   <li><b>Combo points, forms and DoTs</b> are tracked from your casts when the game hides them.</li>
   <li><b>Heals still light up</b>: below your threshold the game itself fades your heal in as the red cue, even while it hides your health.</li>
   <li><b>Reactive abilities</b> (Overpower, Revenge, Riposte) show "press if it lights up", because the dodge or parry that enables them is hidden.</li>
-  <li><b>Mana</b> is estimated from what your spells cost while it is hidden. A <code>~</code> in front of the number means it's an estimate.</li>
+  <li><b>Mana</b> is estimated from what your spells cost while it is hidden, and corrected whenever the game says a spell can't be afforded. A <code>~</code> in front of the number means it's an estimate. Low on mana in a fight, your best mana potion or rune is named next to it.</li>
+  <li><b>Buffs and DoTs from the Cooldown Manager</b> <span class="pill">new in 0.9</span>: in combat the game's own Cooldown Manager bars still show your buffs and your DoTs on the target, and ForeCast reads them, so a resisted or expired DoT is noticed. Turn the Cooldown Manager on in the game's options and keep the spells you care about on its bars.</li>
+  <li><b>Target's low health</b> <span class="pill">new in 0.9 · experimental</span>: ForeCast checks when the target drops below 15, 20, 25 and 35% for Execute, Hammer of Wrath, Shadowburn and finishers. It switches itself off if the game doesn't support the check.</li>
+  <li><b>Enemies near you</b> <span class="pill">new in 0.9</span>: counted from enemy nameplates (turn them on), for area spells like Swipe, Cleave, Blade Flurry, Arcane Explosion, Consecration, Holy Nova, Chain Lightning and Fire Nova.</li>
 </ul>
+<p><b>Hotkeys</b> <span class="pill">new in 0.9</span>: under <b>Key Bindings › AddOns › ForeCast</b> you can bind keys that switch big cooldowns, defensives (emergency heals and escapes) and potions on and off mid-fight. <code>/fc toggle cds</code>, <code>def</code> and <code>pots</code> do the same.</p>
 </section>
 
 <section id="mana" data-s>
@@ -326,7 +330,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="racials" data-s>
 <h2>Racials</h2>
-<p>Blood Fury and Berserking as damage cooldowns, War Stomp and Arcane Torrent as interrupts, and Stoneform and Gift of the Naaru when you're in trouble.</p>
+<p>Blood Fury, Berserking, Elune's Light and Eureka! as damage cooldowns, War Stomp and Arcane Torrent as interrupts, Stoneform and Gift of the Naaru when you're in trouble, and Read Ley Line when your mana runs low in a fight.</p>
 </section>
 
 <section id="languages" data-s>
@@ -336,7 +340,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="hunter" data-s>
 <h2>Hunter</h2>
-<p>Beast Mastery leveling. Ranged and melee rows switch with your range. Hunter's Mark on longer fights, Serpent Sting on any fight of 8 seconds or more (and always before you learn Arcane Shot), Arcane Shot and Concussive Shot at range, Raptor Strike and Mongoose Bite in melee, and Auto Shot weaving. Pet Attack is on the bar, with Mend Pet below your threshold. Bestial Wrath and Rapid Fire are big cooldowns. Intimidation or Feign Death are used when you pull aggro.</p>
+<p>Beast Mastery leveling. Ranged and melee rows switch with your range. Hunter's Mark on longer fights, Serpent Sting on any fight of 8 seconds or more (and always before you learn Arcane Shot), Arcane Shot and Concussive Shot at range, Raptor Strike and Mongoose Bite in melee, and Auto Shot weaving. While Auto Shot is firing or about to land, the shot you're waiting for stays green ("stand still" or "after Auto Shot"), then turns red: the highlight never jumps to Auto Shot and back. Pet Attack is on the bar, with Mend Pet below your threshold. Bestial Wrath and Rapid Fire are big cooldowns. Intimidation or Feign Death are used when you pull aggro.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Mend Pet below X% pet health (slider)</td><td>25%</td></tr>
@@ -363,7 +367,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="warrior" data-s>
 <h2>Warrior</h2>
-<p>Charge opener, Victory Rush after kills, Execute, Mortal Strike, Bloodthirst or Shield Slam, Rend and Battle Shout. Tanks in Defensive Stance get Taunt, Thunder Clap, Sunder Armor, Shield Block and Revenge.</p>
+<p>Charge opener, Victory Rush after kills, Execute, Mortal Strike, Bloodthirst or Shield Slam, Rend and Battle Shout. Tanks in Defensive Stance get Taunt, Thunder Clap, Sunder Armor, Shield Block and Revenge. Arms gets Spearing Strike, Fury gets Reckless Swings, and with two or more enemies in melee Cleave replaces Heroic Strike and Sweeping Strikes comes up (Thunder Clap at three).</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Suggest Heroic Strike with spare rage</td><td>On</td></tr>
@@ -374,7 +378,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="rogue" data-s>
 <h2>Rogue</h2>
-<p>Cheap Shot or Ambush from Stealth, combo point builders, Eviscerate at 3+ points (5 on long fights), and Slice and Dice and Rupture when they pay off. Kick, Gouge and Kidney Shot interrupt. Evasion and Vanish when things go wrong, plus a poison check.</p>
+<p>Cheap Shot or Ambush from Stealth, combo point builders, Eviscerate at 3+ points (5 on long fights), and Slice and Dice and Rupture when they pay off. Kick, Gouge and Kidney Shot interrupt. Evasion and Vanish when things go wrong, plus a poison check. Shank on cooldown for energy, Death Mark at 4+ points (Subtlety; Eviscerate waits for it), and Blade Flurry on two or more enemies.</p>
 <p><b>Combo points are a guess in combat.</b> Forever hides them, so ForeCast counts them from your casts. A builder that misses or gets dodged still counts, so finishers wait for at least 3 points (2 when the target is nearly dead). If you press a finisher and the game says you have no combo points, ForeCast resets its count to 0 and goes back to builders.</p>
 <p><b>Daggers (Subtlety, Assassination):</b> with a dagger in your main hand, ForeCast opens with Ambush, and in a group, while someone else is tanking, it puts Backstab ahead of Hemorrhage and Sinister Strike.</p>
 <table>
@@ -387,7 +391,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="mage" data-s>
 <h2>Mage</h2>
-<p>Armor and Arcane Intellect before the pull, then Frostbolt (or Fireball or Arcane Missiles). Ice Lance on frozen targets and with Fingers of Frost, Frost Nova when a mob reaches you, Counterspell, Ice Barrier and Ice Block, and your wand when your mana plan says to save.</p>
+<p>Armor and Arcane Intellect before the pull, then Frostbolt (or Fireball or Arcane Missiles). Ice Lance on frozen targets and with Fingers of Frost, Frost Nova when a mob reaches you, Counterspell, Ice Barrier and Ice Block, and your wand when your mana plan says to save. Arcane Wrath on cooldown, Frostfire Bolt as Fire's filler once trained, and Arcane Explosion with three or more enemies around you.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Wand a slowed target between Frostbolts (saves mana)</td><td>Off</td></tr>
@@ -408,7 +412,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="druid" data-s>
 <h2>Druid</h2>
-<p>Follows your form. Caster: Moonfire and Wrath. Solo, while the mob walks up to you, it opens with up to three hard-cast Wraths, then Moonfire once the mob is in melee range. Cat: Prowl, Shred, Rake, Claw, then Ferocious Bite or Rip. Bear: Enrage, Demoralizing Roar and Maul, and tanks automatically. Rejuvenation, Regrowth and Healing Touch below your threshold. In Cat Form the auto attack shows a cat paw, in Bear Form a bear claw, instead of your weapon.</p>
+<p>Follows your form. Caster: Moonfire and Wrath. Solo, while the mob walks up to you, it opens with up to three hard-cast Wraths, then Moonfire once the mob is in melee range. Cat: Prowl, Shred, Rake, Claw, then Ferocious Bite or Rip. Shifting Power when Cat Form is short of energy. Bear: Primal Bite, Lacerate, Swipe on two or more, Enrage, Demoralizing Roar and Maul, and tanks automatically. Rejuvenation, Regrowth and Healing Touch below your threshold. In Cat Form the auto attack shows a cat paw, in Bear Form a bear claw, instead of your weapon.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Heal yourself below X% (slider)</td><td>50%</td></tr>
@@ -420,7 +424,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="paladin" data-s>
 <h2>Paladin</h2>
-<p>Keeps the right Seal up: Command with a slow weapon (3.8 s or more), Righteousness otherwise. Holy Strike and Judgement on cooldown, Exorcism on undead and demons, Hammer of Wrath, and Flash of Light or Holy Light below your threshold. Tanks with Righteous Fury.</p>
+<p>Keeps the right Seal up: Command with a slow weapon (3.8 s or more), Righteousness otherwise. Holy Strike and Judgement on cooldown, Exorcism on undead and demons, Hammer of Wrath, and Flash of Light or Holy Light below your threshold. Tanks with Righteous Fury. Swift Judgement while Judgement cools down, Templar's Bulwark when you're in trouble, and Consecration on three or more.</p>
 <p><b>Unsealed Wrath</b> (Retribution's 31-point talent): every melee hit stores your seal, up to 3. Once three swings are stored, ForeCast shows <b>TWIST:</b> with the other seal (Command or Righteousness) so switching fires all three stored procs. Then it counts again and twists back.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
@@ -431,7 +435,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 
 <section id="shaman" data-s>
 <h2>Shaman</h2>
-<p>Lightning Shield and a weapon imbue before the pull, Searing Totem, a Flame Shock pull, Stormstrike into Earth Shock, Lightning Bolt on 5 Maelstrom Weapon stacks, and healing waves below your threshold.</p>
+<p>Lightning Shield and a weapon imbue before the pull, Searing Totem, a Flame Shock pull, Stormstrike into Earth Shock, Lightning Bolt on 5 Maelstrom Weapon stacks, Chain Lightning on two or more enemies, Fire Nova on three around you, and healing waves below your threshold.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Heal yourself below X% (slider)</td><td>40%</td></tr>
@@ -487,6 +491,9 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Danger rating</td><td>Rates your target before you pull, from its level, type and what you've learned about it.</td><td>On</td></tr>
 <tr><td>LOW HEALTH warning</td><td>Below the threshold (<code>/fc lowhp</code>, 35% by default) it shows your escapes that are ready and your best potion.</td><td>On</td></tr>
 <tr><td>Learn from my fights</td><td>Remembers fight lengths, damage per cast and your reaction time to tune the cues. See <a href="#learning">Learning</a>.</td><td>On</td></tr>
+<tr><td>Read my buffs and DoTs from the Cooldown Manager</td><td>Uses the game's Cooldown Manager bars in combat. See <a href="#forever">Built for WoW: Forever</a>.</td><td>On</td></tr>
+<tr><td>Read the target's low health (experimental)</td><td>Execute range for Execute, Hammer of Wrath, Shadowburn and finishers.</td><td>On</td></tr>
+<tr><td>Count nearby enemies from nameplates</td><td>Area spells when enough enemies are near you. Enemy nameplates must be on.</td><td>On</td></tr>
 <tr><td>Mana plan</td><td><b>Spend freely</b>, <b>Balanced</b> or <b>Save for the next pulls</b>. See <a href="#mana">Mana plans</a>.</td><td>Balanced</td></tr>
 <tr><td>Role (tanking classes)</td><td><b>Auto</b> detects it, or force <b>Damage</b> or <b>Tank</b>.</td><td>Auto</td></tr>
 <tr><td>Show my rotation</td><td>Opens the rotation viewer beside settings. See <a href="#viewer">Rotation viewer</a>.</td><td></td></tr>
@@ -606,6 +613,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><th>Command</th><th>What it does</th></tr>
 <tr><td><code>/fc</code></td><td>Open or close settings (also <code>/fc config</code>, <code>/fc settings</code>)</td></tr>
 <tr><td><code>/fc help</code></td><td>List the commands</td></tr>
+<tr><td><code>/fc toggle cds|def|pots</code></td><td>Switch big cooldowns, defensives or potions on or off</td></tr>
 <tr><td><code>/fc report</code></td><td>Everything ForeCast detected: paste this into bug reports</td></tr>
 <tr><td><code>/fc spells</code></td><td>Learned spells: in the rotation, not suggested (with the reason), unrecognized</td></tr>
 <tr><td><code>/fc rescan</code></td><td>Rescan spells and talents (normally automatic)</td></tr>
@@ -655,6 +663,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
   <li>Ruse_Cruize: Druid and Paladin</li>
   <li>NickTew: Enhancement Shaman</li>
 </ul>
+<p>Forever's spell changes are checked against Blizzard's game files and notes through thott.bot. Reading the Cooldown Manager, the hidden-health check and nameplate counting are ideas from the research of <a href="https://github.com/zmsl/hekili">Hekili Forever</a>; no code was taken.</p>
 <p>Talent data from talentsforever.com, used under CC BY 4.0. ForeCast grew out of QuiverShift (hunter) and Smite Club (priest), which continue as standalone addons on the same engine.</p>
 </section>
 </main>
