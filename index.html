@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.0.4</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.0.5</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -328,6 +328,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
   <li><b>No mob logic:</b> no fight-length guess and no threat holding, even in a party.</li>
 </ul>
 <p>Interrupts were already first and work on players the same way. Turn it off with <b>PvP</b> on the Rotation tab. The <a href="#viewer">rotation viewer</a> shows it with Target: Player.</p>
+<p><b>PVP MODE ACTIVATED</b> <span class="pill">new in 1.0.5</span>: when you target an enemy player, a big message and a raid-warning sound tell you ForeCast switched to PvP. It shows once per player, at most every 20 seconds. Setting: <em>PVP MODE ACTIVATED message</em> (Rotation tab, on).</p>
 </section>
 
 <section id="learning" data-s>
@@ -510,6 +511,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
 <tr><td>Big cooldowns are my call</td><td>Cooldowns of a minute or more turn gold when ready, and the rotation never waits for them. Off: they come up red like any other spell.</td><td>On</td></tr>
 <tr><td>Manage threat in groups</td><td>In a party, waits for the tank to pull and holds your damage at 85% threat (plus your class's threat dump). See <a href="#groups">Groups</a>.</td><td>On</td></tr>
+<tr><td>PVP MODE ACTIVATED message</td><td>Big message and sound when you target an enemy player</td><td>On</td></tr>
 <tr><td>PvP</td><td>Against an enemy player: burst cooldowns, slows and earlier defenses. See <a href="#pvp">PvP</a>.</td><td>On</td></tr>
 <tr><td>Coordinate with party members</td><td>Links with party members using ForeCast, QuiverShift or Smite Club to share the pull and threat.</td><td>On</td></tr>
 <tr><td>Danger rating</td><td>Rates your target before you pull, from its level, type and what you've learned about it.</td><td>On</td></tr>
