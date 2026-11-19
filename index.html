@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.0.6</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.0.7</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -262,7 +262,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <h3>Glow on your own action bars</h3>
 <p>Optionally glows the suggested spell on Blizzard's action bars, so you can keep your eyes on your usual buttons. The colors match the window and the halo: red to press, yellow to wait, and the spell that turns red next in green at the same time.</p>
 <h3>Combat focus</h3>
-<p>Optional: in combat everything else on screen fades away and only ForeCast shows. It all comes back when combat ends. Your keybinds keep working, and name plates and the game world aren't touched.</p>
+<p>Optional: in combat everything else on screen fades away except ForeCast, your player frame, your target (and target of target), focus, pet and party frames, and name plates. Unit frames from ElvUI, Shadowed Unit Frames, PitBull and oUF stay too. It all comes back when combat ends, and your keybinds keep working.</p>
 </section>
 
 <section id="minimap" data-s>
@@ -372,7 +372,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <section id="priest" data-s>
 <h2>Priest</h2>
 <p>Shadow leveling. Shadow Word: Pain, Mind Blast and Mind Flay, then your wand as mana runs low, with Shadowform. Power Word: Shield before pulls, and self-heals below your threshold.</p>
-<p><b>Rotation (1.0, Icy Veins):</b> Shadow keeps Shadow Word: Pain and Devouring Plague up, then Mind Blast, Shadow Word: Death, Vampiric Embrace and Mind Flay. The Smite style opens with Holy Fire and Mind Blast and never asks for Shadowform. The Holy style heals: Renew kept on your friendly target, Holy Nova on Searing Light.</p>
+<p><b>Rotation (1.0, Icy Veins):</b> Shadow keeps Shadow Word: Pain and Devouring Plague up, then Mind Blast, Starshards (racial), Shadow Word: Death, Vampiric Embrace and Mind Flay. The Smite style opens with Holy Fire and Mind Blast and never asks for Shadowform. The Holy style heals: Renew kept on your friendly target, Holy Nova on Searing Light.</p>
 <table>
 <tr><th>Setting</th><th>Default</th></tr>
 <tr><td>Self-heal below X% (slider)</td><td>40%</td></tr>
@@ -482,6 +482,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Show HUD</td><td>Shows or hides the window. Ticking it also turns off <em>Halo only</em>.</td><td>On</td></tr>
 <tr><td>Lock HUD position</td><td>When unlocked, drag the window by its title strip.</td><td>Off</td></tr>
 <tr><td>Icons only</td><td>Shrinks the HUD to just its button bar, with no text or bars. Right-click the bar (or type <code>/fc</code>) for settings. Switches when combat ends.</td><td>Off</td></tr>
+<tr><td>Same order as my action bars</td><td>The HUD icons follow the order of your action bars (lowest slot first); spells not on a bar go last. Changes when combat ends.</td><td>Off</td></tr>
 <tr><td>Two rows of clickable buttons</td><td>Two rows of buttons you can click to cast (for example damage on top, defense below). Off: one compact row. Switches when combat ends.</td><td>On</td></tr>
 <tr><td>Power bar</td><td>Your mana, rage or energy above the range band.</td><td>On</td></tr>
 <tr><td>Show the next two spells (NEXT)</td><td>A small strip above the HUD with the two spells coming after the current one.</td><td>Off</td></tr>
@@ -502,7 +503,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Border thickness</td><td>0 (no border) to 8.</td><td>1</td></tr>
 <tr><td>Border color</td><td>Click the swatch to open the color picker. <b>Class color</b> goes back to your class's color.</td><td>Class color</td></tr>
 <tr><td>Glow on my own action bars</td><td>Also glows the suggested spell on Blizzard's action bars, so you can play from your own bars.</td><td>On</td></tr>
-<tr><td>In combat, hide everything else</td><td>Combat focus: in combat only ForeCast shows; the rest of the UI comes back when the fight ends.</td><td>Off</td></tr>
+<tr><td>In combat, hide everything else</td><td>Combat focus: in combat only ForeCast, your unit frames (health, target, party) and name plates show; the rest of the UI comes back when the fight ends.</td><td>Off</td></tr>
 </table></div>
 
 <h3>Rotation</h3>
