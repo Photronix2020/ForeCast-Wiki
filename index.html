@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.0.7</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.0.8</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -212,7 +212,8 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
   <li><b>Range icon</b> at the top center, under the stats:
     <img class="ri" src="img/range-reticle.png" alt="reticle"> in range,
     <img class="ri" src="img/range-melee.png" alt="crossed swords"> in melee,
-    <img class="ri" src="img/range-cross.png" alt="reticle with an X"> too far away (or in a hunter's dead zone). Casters can cast in melee too, so theirs stays a reticle up close.</li>
+    <img class="ri" src="img/range-dead.png" alt="yellow reticle"> in a hunter's dead zone,
+    <img class="ri" src="img/range-cross.png" alt="reticle with an X"> too far away. Casters can cast in melee too, so theirs stays a reticle up close.</li>
   <li><b>FLEEING!</b> in red above the stats when your target runs away at low health.</li>
   <li><b>Performance gauge</b> <span class="pill">new in 1.0.6</span>: a curve over the top of the halo in combat that glides to show how you are doing against your normal DPS for this kind of mob at this level gap. The mark in the middle is your average; it fills from the left, so past the mark is above average. The word under it says <b>STEP IT UP</b> (red, below 90%), <b>AVERAGE</b> (yellow) or <b>ABOVE AVERAGE</b> (green, above 110%). The first seconds of a fight lean toward the middle while the numbers settle. Until it has 3 fights to learn from it says LEARNING YOUR AVERAGE. When Forever hides the meter in combat it uses ForeCast's own estimate from what each of your casts did in past fights.</li>
 </ul>
@@ -478,7 +479,6 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <p>The ForeCast window itself.</p>
 <div class="tbl"><table>
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
-<tr><td>Class slider</td><td>Your class's safety threshold, for example <em>Mend Pet below 25% pet health</em> or <em>Heal yourself below 40% health</em>. Below it, that spell takes over the cue. Each class's value is listed in its section.</td><td>Varies</td></tr>
 <tr><td>Show HUD</td><td>Shows or hides the window. Ticking it also turns off <em>Halo only</em>.</td><td>On</td></tr>
 <tr><td>Lock HUD position</td><td>When unlocked, drag the window by its title strip.</td><td>Off</td></tr>
 <tr><td>Icons only</td><td>Shrinks the HUD to just its button bar, with no text or bars. Right-click the bar (or type <code>/fc</code>) for settings. Switches when combat ends.</td><td>Off</td></tr>
@@ -486,8 +486,6 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Two rows of clickable buttons</td><td>Two rows of buttons you can click to cast (for example damage on top, defense below). Off: one compact row. Switches when combat ends.</td><td>On</td></tr>
 <tr><td>Power bar</td><td>Your mana, rage or energy above the range band.</td><td>On</td></tr>
 <tr><td>Show the next two spells (NEXT)</td><td>A small strip above the HUD with the two spells coming after the current one.</td><td>Off</td></tr>
-<tr><td>Class indicator</td><td>Your class's reminder icon: aspect, stance, armor, buffs, poisons and combo points.</td><td>On</td></tr>
-<tr><td>Class panel</td><td>The class panel at the bottom: pet check, health, seal, totems or demon.</td><td>On</td></tr>
 <tr><td>Minimap button</td><td>Left-click opens settings; drag it around the minimap.</td><td>On</td></tr>
 <tr><td>HUD size</td><td>50–200%. Changes when combat ends.</td><td>105%</td></tr>
 <tr><td>Out of combat</td><td>What the HUD does when you're not fighting and have no enemy targeted: <b>Show</b>, <b>Fade</b> (30%) or <b>Hide</b>.</td><td>Show</td></tr>
@@ -506,28 +504,44 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>In combat, hide everything else</td><td>Combat focus: in combat only ForeCast, your unit frames (health, target, party) and name plates show; the rest of the UI comes back when the fight ends.</td><td>Off</td></tr>
 </table></div>
 
+<h3>Your class (Hunter, Priest...)</h3>
+<p>The tab is named after your class and holds everything only your class has.</p>
+<div class="tbl"><table>
+<tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
+<tr><td>Style</td><td>Your spec's rotation, for example Shadow, Smite or Holy. See <a href="#styles">Play styles and healing</a>.</td><td>From your talents</td></tr>
+<tr><td>Mana plan</td><td><b>Spend freely</b>, <b>Balanced</b> or <b>Save for the next pulls</b>. See <a href="#mana">Mana plans</a>.</td><td>Balanced</td></tr>
+<tr><td>Role (tanking classes)</td><td><b>Auto</b> detects it, or force <b>Damage</b> or <b>Tank</b>.</td><td>Auto</td></tr>
+<tr><td>Show my rotation</td><td>Opens the rotation viewer beside settings. See <a href="#viewer">Rotation viewer</a>.</td><td></td></tr>
+<tr><td>Class slider</td><td>Your class's safety threshold, for example <em>Mend Pet below 25% pet health</em> or <em>Heal yourself below 40% health</em>. Below it, that spell takes over the cue. Each class's value is listed in its section.</td><td>Varies</td></tr>
+<tr><td>Class options</td><td>See the table below.</td><td></td></tr>
+<tr><td>Class indicator</td><td>Your class's reminder icon: aspect, stance, armor, buffs, poisons and combo points. With <em>Halo only</em> it shows as a little box beside the halo's range icon.</td><td>On</td></tr>
+<tr><td>Class panel</td><td>The class panel at the bottom: pet check, health, seal, totems or demon.</td><td>On</td></tr>
+</table></div>
+
+<h3>Group / PvP</h3>
+<div class="tbl"><table>
+<tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
+<tr><td>Manage threat in groups</td><td>In a party, waits for the tank to pull and holds your damage at 85% threat (plus your class's threat dump). See <a href="#groups">Groups</a>.</td><td>On</td></tr>
+<tr><td>Coordinate with party members</td><td>Links with party members using ForeCast, QuiverShift or Smite Club to share the pull and threat.</td><td>On</td></tr>
+<tr><td>Mark group members who use ForeCast</td><td>A small ForeCast badge on the party and raid frames of members running ForeCast.</td><td>On</td></tr>
+<tr><td>Danger rating</td><td>Rates your target before you pull, from its level, type and what you've learned about it.</td><td>On</td></tr>
+<tr><td>LOW HEALTH warning</td><td>Below the threshold (<code>/fc lowhp</code>, 35% by default) it shows your escapes that are ready and your best potion.</td><td>On</td></tr>
+<tr><td>PvP</td><td>Against an enemy player: burst cooldowns, slows and earlier defenses. See <a href="#pvp">PvP</a>.</td><td>On</td></tr>
+<tr><td>PVP MODE ACTIVATED message</td><td>Big message and sound when you target an enemy player</td><td>On</td></tr>
+</table></div>
+
 <h3>Rotation</h3>
-<p>Your class's own options come first (see the table below), then these:</p>
 <div class="tbl"><table>
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
 <tr><td>Big cooldowns are my call</td><td>Cooldowns of a minute or more turn gold when ready, and the rotation never waits for them. Off: they come up red like any other spell.</td><td>On</td></tr>
-<tr><td>Manage threat in groups</td><td>In a party, waits for the tank to pull and holds your damage at 85% threat (plus your class's threat dump). See <a href="#groups">Groups</a>.</td><td>On</td></tr>
-<tr><td>PVP MODE ACTIVATED message</td><td>Big message and sound when you target an enemy player</td><td>On</td></tr>
-<tr><td>PvP</td><td>Against an enemy player: burst cooldowns, slows and earlier defenses. See <a href="#pvp">PvP</a>.</td><td>On</td></tr>
-<tr><td>Coordinate with party members</td><td>Links with party members using ForeCast, QuiverShift or Smite Club to share the pull and threat.</td><td>On</td></tr>
-<tr><td>Danger rating</td><td>Rates your target before you pull, from its level, type and what you've learned about it.</td><td>On</td></tr>
-<tr><td>LOW HEALTH warning</td><td>Below the threshold (<code>/fc lowhp</code>, 35% by default) it shows your escapes that are ready and your best potion.</td><td>On</td></tr>
 <tr><td>Learn from my fights</td><td>Remembers fight lengths, damage per cast and your reaction time to tune the cues. See <a href="#learning">Learning</a>.</td><td>On</td></tr>
 <tr><td>Read my buffs and DoTs from the Cooldown Manager</td><td>Uses the game's Cooldown Manager bars in combat. See <a href="#forever">Built for WoW: Forever</a>.</td><td>On</td></tr>
 <tr><td>Read the target's low health (experimental)</td><td>Execute range for Execute, Hammer of Wrath, Shadowburn and finishers.</td><td>On</td></tr>
 <tr><td>Count nearby enemies from nameplates</td><td>Area spells when enough enemies are near you. Enemy nameplates must be on.</td><td>On</td></tr>
-<tr><td>Mana plan</td><td><b>Spend freely</b>, <b>Balanced</b> or <b>Save for the next pulls</b>. See <a href="#mana">Mana plans</a>.</td><td>Balanced</td></tr>
-<tr><td>Role (tanking classes)</td><td><b>Auto</b> detects it, or force <b>Damage</b> or <b>Tank</b>.</td><td>Auto</td></tr>
-<tr><td>Show my rotation</td><td>Opens the rotation viewer beside settings. See <a href="#viewer">Rotation viewer</a>.</td><td></td></tr>
 <tr><td>Manual scan</td><td>Rescans your spells and talents. Normally this happens on its own.</td><td></td></tr>
 <tr><td>Reset learning</td><td>Clears everything learned from your fights.</td><td></td></tr>
 </table></div>
-<p>Class options on this tab:</p>
+<p>Class options (on your class's tab):</p>
 <div class="tbl"><table>
 <tr><th>Class</th><th>Option</th><th>Default</th></tr>
 <tr><td>Hunter</td><td>Remind me to use Hunter's Mark on longer fights</td><td>On</td></tr>
@@ -552,7 +566,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 </table></div>
 
 <h3 id="viewer">Rotation viewer</h3>
-<p>ForeCast doesn't suggest the same spell every time: what comes up depends on how long the fight will be, whether you're in a party, the target and your range. The rotation viewer shows exactly that. Open it with <b>Show my rotation</b> on the Rotation tab, or <code>/fc rotation</code>. It opens beside the settings window.</p>
+<p>ForeCast doesn't suggest the same spell every time: what comes up depends on how long the fight will be, whether you're in a party, the target and your range. The rotation viewer shows exactly that. Open it with <b>Show my rotation</b> on your class's tab, or <code>/fc rotation</code>. It opens beside the settings window.</p>
 <figure><img src="img/rotation-viewer.png" alt="The rotation viewer" loading="lazy" style="max-width:400px"><figcaption>A hunter, medium fight, solo, at range: Hunter's Mark and the pet first, then Serpent Sting and Arcane Shot, with Auto Shot between them.</figcaption></figure>
 <p>Pick a fight with the buttons at the top:</p>
 <ul>
@@ -590,7 +604,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <p>One checkbox per sound (ticking one plays it), plus the sound channel: Master, Sound effects or Dialog. The list is under <a href="#sounds">Sounds</a>.</p>
 
 <h3>Halo</h3>
-<p>The halo shows while this tab is open, so you can see each change.</p>
+<p>The halo, its performance gauge and range icon show while this tab is open, so you can see each change. The halo's shape and opacity are on the left; what it shows (rings, stats, range icon, performance gauge) is on the right.</p>
 <div class="tbl"><table>
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
 <tr><td>Halo around my character</td><td>Turns the halo on. It shows when you target a living enemy.</td><td>Off</td></tr>
@@ -614,7 +628,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Halo when idle</td><td>Opacity with no enemy targeted. 0 hides it; more keeps it on screen, faded.</td><td>Hidden</td></tr>
 <tr><td>Power ring</td><td>Mana, rage or energy as a glowing line around the left arc (druids: all three).</td><td>On</td></tr>
 <tr><td>Health ring</td><td>Your health around the right arc; your pet's for hunters and warlocks.</td><td>On</td></tr>
-<tr><td>Range icon</td><td>At the top center: reticle in range, crossed swords in melee, X too far away or in a hunter's dead zone.</td><td>On</td></tr>
+<tr><td>Range icon</td><td>At the top center: reticle in range, crossed swords in melee, yellow reticle in a hunter's dead zone, X too far away.</td><td>On</td></tr>
 <tr><td>Stats</td><td><code>ON YOU</code>, DPS and threat above the halo. The fight's DPS stays a few seconds after combat, then fades.</td><td>On</td></tr>
 <tr><td>Performance gauge</td><td>A curve over the halo in combat: STEP IT UP, AVERAGE or ABOVE AVERAGE against your normal DPS. Shows while the Halo tab is open.</td><td>On</td></tr>
 </table></div>
