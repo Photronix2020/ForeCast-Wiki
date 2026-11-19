@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.0.5</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.0.6</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -214,7 +214,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
     <img class="ri" src="img/range-melee.png" alt="crossed swords"> in melee,
     <img class="ri" src="img/range-cross.png" alt="reticle with an X"> too far away (or in a hunter's dead zone). Casters can cast in melee too, so theirs stays a reticle up close.</li>
   <li><b>FLEEING!</b> in red above the stats when your target runs away at low health.</li>
-  <li><b>DPS gauge</b> (optional): a curve over the top of the halo in combat, like the DPS bar on the window. The mark in the middle is your average fight; it fills from the left, so past the mark means above average. It's colored like the DPS bar (red well below, yellow about average, green above, purple far above) with the difference in percent. When Forever hides the meter in combat it uses ForeCast's own estimate (marked <code>~</code>) from what each of your casts did in past fights. After the fight it shows your final DPS and fades out together with the DPS text.</li>
+  <li><b>Performance gauge</b> <span class="pill">new in 1.0.6</span>: a curve over the top of the halo in combat that glides to show how you are doing against your normal DPS for this kind of mob at this level gap. The mark in the middle is your average; it fills from the left, so past the mark is above average. The word under it says <b>STEP IT UP</b> (red, below 90%), <b>AVERAGE</b> (yellow) or <b>ABOVE AVERAGE</b> (green, above 110%). The first seconds of a fight lean toward the middle while the numbers settle. Until it has 3 fights to learn from it says LEARNING YOUR AVERAGE. When Forever hides the meter in combat it uses ForeCast's own estimate from what each of your casts did in past fights.</li>
 </ul>
 <h3>Placing it</h3>
 <p>Sliders for halo size, width (how far apart the two sides are), height, curve (from 100% round arcs down to 0%, two straight upright columns), icon size, opacity and idle opacity. Width and height change only their own direction; the halo only grows past them when the icons need the room. Icons and text never overlap at any setting. Untick <b>Lock halo position</b> and drag it. <b>Reset halo position</b> puts it back around your character. <b>Halo only</b> hides the ForeCast window entirely; settings stay on the minimap button and <code>/fc</code>.</p>
@@ -235,8 +235,8 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 </section>
 
 <section data-s>
-<h2>Damage Power and Rotation %</h2>
-<p><b>Damage Power</b> compares this fight's DPS with your own normal DPS for the same kind of mob (normal, elite...) at the same level gap, learned from your fights (after 3 of them). Low-level mobs die fast and make plain DPS look high; Damage Power doesn't: 100% is your usual, above is better. <b>Rotation %</b> is how much of the fight you spent doing your best damage: it drops when a damage spell sat ready for over half a second with nothing going on, and when you cast a weaker damage spell than the red one (by what each spell does for you on average). How fast you press doesn't count against you. Both show under the DPS bar and on the halo's stats line (<em>Damage Power and Rotation %</em> on the Damage tab, on by default); <code>/fc power</code> prints them.</p>
+<h2>Performance gauge</h2>
+<p>Low-level mobs die fast and make plain DPS look high, so ForeCast learns your normal DPS for each kind of mob (normal, elite...) at each level gap, and across all your fights until a kind has 3. The <b>Performance gauge</b> over the halo compares this fight with that normal and glides between <b>STEP IT UP</b>, <b>AVERAGE</b> and <b>ABOVE AVERAGE</b>. It replaces the Damage Power and Rotation % numbers of 1.0.2 to 1.0.5. Turn it on or off on the Halo tab.</p>
 </section>
 
 <section data-s>
@@ -602,10 +602,11 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Halo width</td><td>50–250%: how far apart the left and right sides are.</td><td>100%</td></tr>
 <tr><td>Halo height</td><td>50–250%: how tall the sides are.</td><td>100%</td></tr>
 <tr><td>Halo curve</td><td>100% gives round arcs; lower straightens them, down to two upright columns at 0%.</td><td>100%</td></tr>
-<tr><td>DPS gauge height</td><td>Moves the DPS gauge up or down (−150 to +150).</td><td>0</td></tr>
-<tr><td>DPS gauge curve</td><td>Bends the DPS gauge from flat (0%) to round (100%) and past (150%).</td><td>100%</td></tr>
+<tr><td>Performance gauge height</td><td>Moves the Performance gauge up or down (−150 to +150).</td><td>0</td></tr>
+<tr><td>Performance gauge curve</td><td>Bends the Performance gauge from flat (0%) to round (100%) and past (150%).</td><td>100%</td></tr>
+<tr><td>Range icon height</td><td>Moves the range icon (reticle, swords, X) up or down (−150 to +150), separate from the gauge.</td><td>0</td></tr>
 <tr><td>Ring sides</td><td>Left or right side of the halo for your power ring and your health ring (every class; druids choose energy, rage and mana separately).</td><td>Energy left, rage right, mana left</td></tr>
-<tr><td>Halo line thickness</td><td>50–300% for the arcs, rings and DPS gauge.</td><td>100%</td></tr>
+<tr><td>Halo line thickness</td><td>50–300% for the arcs, rings and Performance gauge.</td><td>100%</td></tr>
 <tr><td>Halo icon size</td><td>50–200% for the spell icons on the halo.</td><td>100%</td></tr>
 <tr><td>Other spells</td><td>How visible the spells that aren't suggested are: 0% hidden until suggested, 100% always fully visible in full color.</td><td>22%</td></tr>
 <tr><td>Halo opacity</td><td>10–100% for the whole halo.</td><td>100%</td></tr>
@@ -614,7 +615,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Health ring</td><td>Your health around the right arc; your pet's for hunters and warlocks.</td><td>On</td></tr>
 <tr><td>Range icon</td><td>At the top center: reticle in range, crossed swords in melee, X too far away or in a hunter's dead zone.</td><td>On</td></tr>
 <tr><td>Stats</td><td><code>ON YOU</code>, DPS and threat above the halo. The fight's DPS stays a few seconds after combat, then fades.</td><td>On</td></tr>
-<tr><td>DPS gauge</td><td>A curve over the halo in combat: the middle is your average fight, left of it below, right of it above.</td><td>Off</td></tr>
+<tr><td>Performance gauge</td><td>A curve over the halo in combat: STEP IT UP, AVERAGE or ABOVE AVERAGE against your normal DPS. Shows while the Halo tab is open.</td><td>On</td></tr>
 </table></div>
 <p>No size, width, height, curve or icon setting makes icons or text overlap: the halo grows a little when the icons need room.</p>
 
