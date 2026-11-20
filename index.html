@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.0.9</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.1.0</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -160,7 +160,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <p>The main ForeCast window. Drag it by its title strip, or lock it in settings.</p>
 <figure><img src="img/hud.png" alt="The ForeCast HUD for a hunter" loading="lazy"><figcaption>The HUD (hunter, version 0.7.3): two rows of spell buttons, mana, the range band, the session DPS bar, and the aspect and pet check at the bottom.</figcaption></figure>
 <h3>Icon rows</h3>
-<p>Two rows of clickable icons by default. For hunters, the top row is ranged and the bottom row melee, and only the row for your current range is live. For other classes, attacks are on top and defense, healing and buffs below. Turn off <em>Two rows of clickable buttons</em> for one compact row. Heals and self-buffs cast on you even with an enemy targeted.</p>
+<p>Two rows of clickable icons by default. For hunters, the top row is ranged and the bottom row melee, and only the row for your current range is live. For other classes, attacks are on top and defense, healing and buffs below. Turn off <em>Two rows of buttons</em> for one compact row, which is clickable too (except for hunters, whose single row swaps with range). Heals and self-buffs cast on you even with an enemy targeted.</p>
 <p>Auto Shot, Attack and wand Shoot are on the bar too, shown with your weapon's picture. Clicking them starts them and never switches them off.</p>
 <h3>Cue text and NEXT</h3>
 <p>The line at the top right says what to do in words, such as <code>CAST ARCANE SHOT</code>, <code>GET READY: SERPENT STING 1.2s</code>, <code>LET THE TANK PULL</code> or <code>WAITING FOR TARGET</code>. <em>Show the next two spells above the HUD</em> adds a NEXT strip.</p>
@@ -261,7 +261,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <h3>LOW HEALTH warning</h3>
 <p>Below your threshold (35% by default, <code>/fc lowhp &lt;5-90&gt;</code>), the HUD warns you and shows your escapes that are ready, plus your best healing potion.</p>
 <h3>Glow on your own action bars</h3>
-<p>Optionally glows the suggested spell on Blizzard's action bars, so you can keep your eyes on your usual buttons. The colors match the window and the halo: red to press, yellow to wait, and the spell that turns red next in green at the same time.</p>
+<p>Optionally glows the suggested spell on your action bars (Blizzard, Bartender4, Dominos, ElvUI, and other bar addons such as EllesmerUI), so you can keep your eyes on your usual buttons. The colors match the window and the halo: red to press, yellow to wait, and the spell that turns red next in green at the same time.</p>
 <h3>Combat focus</h3>
 <p>Optional: in combat everything else on screen fades away except ForeCast, your player frame, your target (and target of target), focus, pet and party frames, and name plates. Unit frames from ElvUI, Shadowed Unit Frames, PitBull and oUF stay too. It all comes back when combat ends, and your keybinds keep working.</p>
 </section>
@@ -483,12 +483,15 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Lock HUD position</td><td>When unlocked, drag the window by its title strip.</td><td>Off</td></tr>
 <tr><td>Icons only</td><td>Shrinks the HUD to just its button bar, with no text or bars. Right-click the bar (or type <code>/fc</code>) for settings. Switches when combat ends.</td><td>Off</td></tr>
 <tr><td>Same order as my action bars</td><td>The HUD icons follow the order of your action bars (lowest slot first); spells not on a bar go last. Changes when combat ends.</td><td>Off</td></tr>
-<tr><td>Two rows of clickable buttons</td><td>Two rows of buttons you can click to cast (for example damage on top, defense below). Off: one compact row. Switches when combat ends.</td><td>On</td></tr>
+<tr><td>Two rows of buttons</td><td>Two rows of buttons you can click to cast (for example damage on top, defense below). Off: one compact row, also clickable (hunters: not clickable, since it swaps with range). Switches when combat ends.</td><td>On</td></tr>
+<tr><td>Show my keybinds on the icons</td><td>Your key for each spell in the corner of its HUD, halo and mini window icon, read from your action bars (Blizzard, Bartender4, Dominos, or the key text your bar addon shows).</td><td>Off</td></tr>
+<tr><td>Mini window</td><td>A small box with just the spell to cast now, colored like the HUD. Unlock the HUD to drag it anywhere. It shows the spell but can't cast it: the game only lets addons change what a button casts out of combat.</td><td>Off</td></tr>
+<tr><td>Mini window size</td><td>50–300%.</td><td>100%</td></tr>
 <tr><td>Power bar</td><td>Your mana, rage or energy above the range band.</td><td>On</td></tr>
 <tr><td>Show the next two spells (NEXT)</td><td>A small strip above the HUD with the two spells coming after the current one.</td><td>Off</td></tr>
 <tr><td>Minimap button</td><td>Left-click opens settings; drag it around the minimap.</td><td>On</td></tr>
 <tr><td>HUD size</td><td>50–200%. Changes when combat ends.</td><td>105%</td></tr>
-<tr><td>Out of combat</td><td>What the HUD does when you're not fighting and have no enemy targeted: <b>Show</b>, <b>Fade</b> (30%) or <b>Hide</b>.</td><td>Show</td></tr>
+<tr><td>Out of combat</td><td>What the HUD does when you're not fighting and have no enemy targeted: <b>Show</b>, <b>Fade</b> (30%) or <b>Hide</b>. It always comes up when combat starts, even with nothing targeted.</td><td>Show</td></tr>
 <tr><td>Reset HUD position</td><td>Puts the HUD back, centered above your action bars.</td><td></td></tr>
 </table></div>
 
@@ -500,7 +503,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Background opacity</td><td>0–100% for the panel behind the HUD and the recap. Icons and text stay solid. Works in combat.</td><td>100%</td></tr>
 <tr><td>Border thickness</td><td>0 (no border) to 8.</td><td>1</td></tr>
 <tr><td>Border color</td><td>Click the swatch to open the color picker. <b>Class color</b> goes back to your class's color.</td><td>Class color</td></tr>
-<tr><td>Glow on my own action bars</td><td>Also glows the suggested spell on Blizzard's action bars, so you can play from your own bars.</td><td>On</td></tr>
+<tr><td>Glow on my own action bars</td><td>Also glows the suggested spell on your action bars, so you can play from your own bars.</td><td>On</td></tr>
 <tr><td>In combat, hide everything else</td><td>Combat focus: in combat only ForeCast, your unit frames (health, target, party) and name plates show; the rest of the UI comes back when the fight ends.</td><td>Off</td></tr>
 </table></div>
 
