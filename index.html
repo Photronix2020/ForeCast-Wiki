@@ -83,7 +83,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <body>
 <div class="layout">
 <aside>
-  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.1.5</small></div></div>
+  <div class="brand"><img src="img/icon.png" alt=""><div><b>ForeCast</b><small>Wiki · v1.2.0</small></div></div>
   <input id="search" type="search" placeholder="Search features, settings, commands…" aria-label="Search">
   <button class="menu" id="menu">Contents</button>
   <nav id="nav">
@@ -166,8 +166,8 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <p>The line at the top right says what to do in words, such as <code>CAST ARCANE SHOT</code>, <code>GET READY: SERPENT STING 1.2s</code>, <code>LET THE TANK PULL</code> or <code>WAITING FOR TARGET</code>. <em>Show the next two spells above the HUD</em> adds a NEXT strip.</p>
 <h3>Range band</h3>
 <p>Colored blocks for each range zone, with the one you're in lit. For hunters these are CLOSE, DEAD ZONE, RANGED and OUT.</p>
-<h3>Threat bar</h3>
-<p>Your threat on the target, with "AGGRO ON YOU" when the mob turns on you.</p>
+<h3>Threat meter</h3>
+<p>A smooth bar with no numbers (1.2): green while you're safely under the tank, yellow, then red as you near your threat limit, so you know to back off. If you're the tank, it shows how close anyone else is to taking the mob, and red means someone is about to, or already has. It works in a group (or with a pet). The same meter runs on the halo, just under the Performance gauge. Turn it off on the Group tab if you use another threat meter.</p>
 <h3>Power and DPS bars</h3>
 <p>The power bar shows mana, rage or energy. The DPS bar is the fight's running average (all damage so far divided by time in combat). The gold line on it is your average over past fights.</p>
 <h3>Class panel</h3>
@@ -208,7 +208,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <ul>
   <li><b>Power ring</b> around the left arc (mana, rage or energy): a glowing line that fills from the bottom. Druids get three, energy, rage and mana, stacked outward and marked E, R and M, so all three show in every form.</li>
   <li><b>Health ring</b> around the right arc: your pet's health for hunters and warlocks (yours with no pet), your own for everyone else. Both stay live in combat even though Forever hides the numbers.</li>
-  <li><b>Stats</b> above the halo: <code>ON YOU</code>, DPS and threat. When the fight ends, its DPS stays there for a few seconds, then fades out.</li>
+  <li><b>Stats</b> above the halo: <code>ON YOU</code> and DPS. When the fight ends, its DPS stays there for a few seconds, then fades out.</li>
   <li><b>Range icon</b> at the top center, under the stats:
     <img class="ri" src="img/range-reticle.png" alt="reticle"> in range,
     <img class="ri" src="img/range-melee.png" alt="crossed swords"> in melee,
@@ -314,6 +314,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
   <li>No opener before the tank pulls (<code>LET THE TANK PULL</code>).</li>
   <li>Damage turns yellow at 85% of the tank's threat, and comes back 10 points below.</li>
   <li>When you pull aggro, your class's threat dump lights up: Feign Death, Fade, Feint and so on.</li>
+  <li><b>Threat meter</b> (1.2, on by default): a smooth green-to-red bar on the window and under the halo's Performance gauge. Green: safely under the tank. Red: back off. For tanks, red means you're losing the mob.</li>
 </ul>
 <p><b>Role</b> (warrior, druid, paladin): <em>Auto</em> works it out from your stance, form or Righteous Fury, or you can force Damage or Tank. Tanks are never held back, and get a taunt cue when a mob gets loose.</p>
 <p><b>Coordinate with party members</b> who use ForeCast, QuiverShift or Smite Club. The tank gets a head start, and damage holds when the tank loses the mob. <code>/fc group</code> shows who is linked.</p>
@@ -527,6 +528,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <div class="tbl"><table>
 <tr><th>Setting</th><th>What it does</th><th>Default</th></tr>
 <tr><td>Manage threat in groups</td><td>In a party, waits for the tank to pull and holds your damage at 85% threat (plus your class's threat dump). See <a href="#groups">Groups</a>.</td><td>On</td></tr>
+<tr><td>Threat meter</td><td>A smooth bar on the window and under the halo's Performance gauge: green while you're under the tank, red to back off (tanks: red when you're losing the mob). No numbers.</td><td>On</td></tr>
 <tr><td>Coordinate with party members</td><td>Links with party members using ForeCast, QuiverShift or Smite Club to share the pull and threat.</td><td>On</td></tr>
 <tr><td>Mark group members who use ForeCast</td><td>A small ForeCast badge on the party and raid frames of members running ForeCast.</td><td>On</td></tr>
 <tr><td>Danger rating</td><td>Rates your target before you pull, from its level, type and what you've learned about it.</td><td>On</td></tr>
@@ -634,7 +636,7 @@ figcaption{color:var(--muted);font-size:13px;margin-top:6px}
 <tr><td>Power ring</td><td>Mana, rage or energy as a glowing line around the left arc (druids: all three).</td><td>On</td></tr>
 <tr><td>Health ring</td><td>Your health around the right arc; your pet's for hunters and warlocks.</td><td>On</td></tr>
 <tr><td>Range icon</td><td>At the top center: reticle in range, crossed swords in melee, yellow reticle in a hunter's dead zone, X too far away.</td><td>On</td></tr>
-<tr><td>Stats</td><td><code>ON YOU</code>, DPS and threat above the halo. The fight's DPS stays a few seconds after combat, then fades.</td><td>On</td></tr>
+<tr><td>Stats</td><td><code>ON YOU</code> and DPS above the halo. The fight's DPS stays a few seconds after combat, then fades.</td><td>On</td></tr>
 <tr><td>Performance gauge</td><td>A curve over the halo in combat: STEP IT UP, AVERAGE or ABOVE AVERAGE against your normal DPS. Shows while the Halo tab is open.</td><td>On</td></tr>
 </table></div>
 <p>Every slider works on its own: width, height and icon size never change each other. If icons overlap, lower the halo icon size.</p>
